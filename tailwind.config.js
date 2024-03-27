@@ -82,12 +82,45 @@ module.exports = {
           "100%":{
            "background-position":"0px -100px" 
           }
-        }
+        },
+        fadeUp:{
+          "0%":{
+            transform:"translateY(160px)",
+            opacity:0
+          },
+          "100%":{
+            transform:"translateY(0px)",
+            opacity:1
+          },
+        },
+        fadeRight:{
+          "0%":{
+            transform:"translateX(160px)",
+            opacity:0
+          },
+          "100%":{
+            transform:"translateX(0px)",
+            opacity:1
+          },
+        },
+        fadeLeft:{
+          "0%":{
+            transform:"translateX(-160px)",
+            opacity:0
+          },
+          "100%":{
+            transform:"translateX(0px)",
+            opacity:1
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        movebg:"moveBg 30s linear infinite"
+        movebg:"moveBg 30s linear infinite",
+        fadeup:"fadeUp 0.5s linear 1",
+        faderight:"fadeRight 0.5s linear 1",
+        fadeleft:"fadeLeft 0.5s linear 1"
       },
       screens:{
         xs:"340px",

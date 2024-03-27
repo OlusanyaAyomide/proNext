@@ -140,6 +140,12 @@ export const Svgs = {
     CameraSvg:Camera,
     faceBookSvg:(props:LucideProps)=>(
         <svg {...props} xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#4267B2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" ><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+    ),
+    StarSvg:(props:LucideProps)=>(
+        <svg {...props} width="29" height="27" viewBox="0 0 29 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14.5 6.6735L16.117 11.0281L16.5941 12.3151L17.965 12.3715L22.6042 12.5626L18.9646 15.4391L17.8866 16.2916L18.2579 17.6144L19.5105 22.0817L15.6412 19.5091L14.5 18.7488L13.3588 19.5077L9.4895 22.0804L10.7421 17.613L11.1134 16.2902L10.0354 15.4377L6.39437 12.5613L11.0336 12.3701L12.4045 12.3137L12.8816 11.0267L14.5 6.6735ZM14.5 0.75L10.9497 10.3104L0.75 10.7284L8.75525 17.0561L6.0025 26.875L14.5 21.2251L22.9975 26.875L20.2447 17.0561L28.25 10.7284L18.0502 10.309L14.5 0.75Z" fill="#1E255D"/>
+        </svg>
+
     )
 
 

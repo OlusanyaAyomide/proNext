@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button'
+import { Svgs } from '../../util/svgs'
 
 export default function Hero() {
   return (
@@ -8,7 +9,11 @@ export default function Hero() {
         <div className="relative z-20 pt-16 flex-center flex-wrap">
             <div className="w-full md:pl-8 lg:pl-16 h-full flex-col justify-center md:w-6/12">
                 <span className="font-bold text-5xl md:text-6xl block mb-4 text-pro-blue max-md:text-center">Unlock Your</span>
-                <span className='text-5xl md:text-6xl  block mb-2 text-main font-bold max-md:text-center'>Potential</span>
+                <h1 className='text-5xl md:text-6xl block mb-2 text-main font-bold max-md:text-center'>
+                    <span className='relative'>Potential
+                        <Svgs.StarSvg  className='absolute scale-75 -right-4 -top-2'/>
+                    </span>
+                </h1>
                 <h1  className='leading-[20px] max-w-[270px] mt-3 max-md:mx-auto max-md:text-center text-base'>Connecting talent with opportunity, one placement at a time.</h1>
                 <div className="flex-center mt-12 max-md:justify-center">
                     <Button className='px-6 mr-7'>

@@ -16,7 +16,7 @@ export default function UserMain() {
         <div className="flex-center mt-10 flex-wrap">
         {_mockUsers.map((item,key)=>(
             <div key={key} className="w-6/12 sm:w-4/12 md:w-3/12 px-1 sm:px-2">
-                    <div className='card mb-5 py-8'>
+                    <div className='bg-[url("/user/userbg2.png")] bg-cover mb-5 py-8'>
                         <Avatar className='block mb-3 mx-auto h-16 w-16'>
                             <AvatarFallback>PN</AvatarFallback>
                             <AvatarImage src={item.image}/>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Svgs } from '../../../util/svgs'
 import { Button } from '../../ui/button'
 import { yupResolver } from "@hookform/resolvers/yup"
@@ -9,16 +9,33 @@ import { Select, SelectGroup, SelectTrigger,SelectContent, SelectValue, SelectIt
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { Calendar } from '../../ui/calendar';
 import { Textarea } from '../../ui/textarea';
+import { Avatar,AvatarFallback, AvatarImage } from '../../ui/avatar';
 
 
 export default function UserAdd() {
     const [file,setFile] = useState<File | null>(null)
     const [url,setUrl] = useState("")
     const [date, setDate] = useState<Date | undefined>(new Date())
+    const ref = useRef<HTMLInputElement>(null)
 
-  const {register,handleSubmit,getValues,formState:{errors},setValue} = useForm<INewUserSchema>(
+  const {register,handleSubmit,formState:{errors},setValue} = useForm<INewUserSchema>(
     {resolver:yupResolver(newUserSchema)}
     )
+
+    const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{
+        const file = e.target.files && e.target.files[0];
+        if(!file){return}
+
+        const reader = new FileReader();
+        reader.readAsDataURL(file)
+        console.log("out")
+        reader.onloadend=()=>{
+            console.log("in here")
+            const imageData = reader.result as string
+            setUrl(imageData)
+            setFile(file)
+        }
+    }   
 
 
     const onSubmit:SubmitHandler<INewUserSchema>= async (data)=>{
@@ -30,10 +47,19 @@ export default function UserAdd() {
         <h1 className="pl-2 section-header">Add User</h1>
         <div className="mt-4 card px-2">
             <div className="w-fit mx-auto">
-                <div className="mx-auto h-20 w-20 grid rounded-full bg-offwhite place-items-center">
-                    <Svgs.CameraSvg/>
-                </div>
-                <Button variant={"ghost"} className='block mx-auto mt-3'>Upload Photo</Button> 
+                {(url && file)?
+                    <Avatar className='h-24 border shrink-0 w-24 overflow-hidden relative'>
+                        <AvatarFallback>ND</AvatarFallback>
+                        <AvatarImage className='object-cover' src={url}/>
+                    </Avatar>
+                    :
+                    <div className="mx-auto h-24 w-24 grid rounded-full bg-offwhite place-items-center">
+                        <Svgs.CameraSvg/>
+                    </div>    
+                    }
+
+                <Button onClick={()=>ref.current?.click()} variant={"ghost"} className='block mx-auto mt-3'>Upload Photo</Button> 
+                <input  className='hidden' accept="image/*" onChange={handleUpload} ref={ref} type="file"/>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-4 flex-center max-w-[800px] mx-auto flex-wrap">
             <UserInput

@@ -67,6 +67,20 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
       keyframes: {
+        "rotate-star":{
+          "0%":{
+            transform:"translateX(160px) rotate(360deg)",
+            opacity:0,
+          },
+          "20%":{
+            transform:"translateX(0px) rotate(0deg)",
+            opacity:1
+          },
+          "100%":{
+            transform:"translateX(0px) rotate(0deg)",
+            opacity:1
+          }
+        },
         "accordion-down": {
           from: { height: "0" },
           to: { height: "var(--radix-accordion-content-height)" },
@@ -118,9 +132,10 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         movebg:"moveBg 30s linear infinite",
-        fadeup:"fadeUp 0.5s linear 1",
-        faderight:"fadeRight 0.5s linear 1",
-        fadeleft:"fadeLeft 0.5s linear 1"
+        fadeup:"fadeUp 1.2s linear 1",
+        faderight:"fadeRight 1s linear 1",
+        fadeleft:"fadeLeft 1s linear 1",
+        star:"rotate-star 5s linear 10"
       },
       screens:{
         xs:"340px",

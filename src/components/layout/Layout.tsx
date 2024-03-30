@@ -12,7 +12,7 @@ export default function Layout({children}:{children:React.ReactNode}) {
                     <SideLinks/>
                 </div>  
             </div>
-            <div className="px-2 grow lg:px-3 min-h-[180vh]">
+            <div className="px-2 grow lg:px-3 pb-3">
                 {children}
             </div>
         </div>

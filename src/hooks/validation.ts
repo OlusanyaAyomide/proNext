@@ -10,6 +10,10 @@ export interface INewUserSchema{
     address:string   
 }
 
+export interface ILogIn{
+    email:string
+    password:string
+}
 
 export const newUserSchema:yup.ObjectSchema<INewUserSchema>= yup.object({
     firstName:yup.string().required(),
@@ -19,4 +23,15 @@ export const newUserSchema:yup.ObjectSchema<INewUserSchema>= yup.object({
     phoneNumber: yup.string().matches(/^[0-9]*$/, 'Phone number must contain only digits').max(12).required(),
     gender:yup.string().required(),
     address:yup.string().required()
+    
+})
+
+
+export const loginSchema:yup.ObjectSchema<ILogIn>=yup.object({
+    email:yup.string().email().required(),
+    password:yup.string().required()
+})
+
+export const resetSchema:yup.ObjectSchema<{email:string}>=yup.object({
+    email:yup.string().email().required()
 })

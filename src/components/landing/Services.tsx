@@ -2,6 +2,7 @@ import React from 'react'
 import { _mockServices } from '../../util/constants'
 import { Button } from '../ui/button'
 import { Svgs } from '../../util/svgs'
+import TriggerView from '../util-component/TriggerView'
 
 export default function Services() {
   return (
@@ -20,10 +21,13 @@ export default function Services() {
 
                 </div>
             ))}
-            <Button className='mx-auto items-center px-6 hover:bg-pro-blue   flex bg-pro-blue'>
-                <span>Load More Services</span>
-                <Svgs.DownloadSvg className='ml-4'/>
-            </Button>
+            <TriggerView side='up' className='w-fit mx-auto'  >
+                <Button className='mx-auto items-center px-6 hover:bg-pro-blue   flex bg-pro-blue'>
+                    <span>Load More Services</span>
+                    <Svgs.DownloadSvg className='ml-4'/>
+                </Button>
+            </TriggerView>
+     
         </div>
     </div>
   )

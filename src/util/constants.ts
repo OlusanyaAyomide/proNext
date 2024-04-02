@@ -24,6 +24,13 @@ export const _aboutUs1 = `Pronext Manpower is born from a vision to transform th
 
 export const _aboutus2 = `At Pronext Manpower, our commitment to excellence extends globally. Our delivery team operates from three countries, ensuring that we have a diverse and skilled workforce ready to meet the needs of our clients wherever they may be. We leverage our combined skills to revolutionise the recruitment industry and become the go-to agency for both job seekers and employers seeking success. Whether you're a candidate seeking your dream job or a business looking to build your dream team, Pronext Manpower is your partner.`
 
+export const _aboutus3 = 'To become the foremost partner in connecting organizations with exceptional talent, fostering growth and success for both businesses and individuals'
+
+
+export const _aboutus4 =   `Our mission is to deliver innovative, efficient, and personalized recruitment solutions that empower businesses to thrive and individuals to achieve their professional aspirations. We are committed to building long-term relationships based on trust, integrity, and mutual success.
+`
+export const _aboutus5 = `Our objectives is to focus on delivering tailored solutions for client satisfaction and candidate success. We embrace innovation, maintain quality assurance standards, promote diversity, and foster continuous improvement. Ultimately, we aim for market leadership, recognized for exceptional service quality and positive impact in the recruitment industry.`
+
 
 export const _howItWorksTalent =[
     {

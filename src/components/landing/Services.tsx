@@ -18,7 +18,6 @@ export default function Services() {
                         <h1 className="mt-4  text-pro-blue text-base font-bold">{item.title}</h1>
                         <p className="mt-2">{item.content}</p>
                     </div>
-
                 </div>
             ))}
             <TriggerView side='up' className='w-fit mx-auto'  >

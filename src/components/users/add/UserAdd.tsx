@@ -28,12 +28,11 @@ export default function UserAdd() {
 
         const reader = new FileReader();
         reader.readAsDataURL(file)
-        console.log("out")
         reader.onloadend=()=>{
-            console.log("in here")
             const imageData = reader.result as string
             setUrl(imageData)
             setFile(file)
+            setValue("image",imageData)
         }
     }   
 
@@ -45,8 +44,8 @@ export default function UserAdd() {
   return (
     <div  className='pt-6'>
         <h1 className="pl-2 section-header">Add User</h1>
-        <div className="mt-4 card px-2">
-            <div className="w-fit mx-auto">
+        <div className="mt-4 card pb-6 px-2">
+            <div className="w-fit mx-auto relative">
                 {(url && file)?
                     <Avatar className='h-24 border shrink-0 w-24 overflow-hidden relative'>
                         <AvatarFallback>ND</AvatarFallback>
@@ -58,8 +57,9 @@ export default function UserAdd() {
                     </div>    
                     }
 
-                <Button onClick={()=>ref.current?.click()} variant={"ghost"} className='block mx-auto mt-3'>Upload Photo</Button> 
+                <Button onClick={()=>ref.current?.click()} variant={"ghost"} className='block mx-auto mt-0 text-blue-500'>Upload Photo</Button> 
                 <input  className='hidden' accept="image/*" onChange={handleUpload} ref={ref} type="file"/>
+                {errors.image && <span className="text-red-500 absolute -bottom-2 whitespace-nowrap left-2 text-[13px]">{errors.image.message}</span>}
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className="mt-4 flex-center max-w-[800px] mx-auto flex-wrap">
             <UserInput
@@ -131,12 +131,14 @@ export default function UserAdd() {
                 </Select>
                 {errors.gender && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.gender.message}</span>}
             </div>
-            <div className="w-full relative h-[200px]">
+            <div className="w-full sm:w-6/12 relative h-[200px]">
                 <Textarea {...register("address")} className='resize-none bg-offwhite rounded-md ring-0 focus-visible:ring-0 h-full'>
                 </Textarea>
                 {errors.address && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.address.message}</span>}
             </div>
-            <Button className='mt-5 block mx-auto px-10'>Add User</Button>
+            <div className="w-full sm:w-6/12 sm:pl-4 sm:flex sm:items-end sm:h-[200px] max-sm:mt-5">
+                    <Button className='mt-5 block mx-auto px-10'>Add User</Button>
+                </div>
         </form>
         </div>
 

@@ -12,6 +12,5 @@ export default function SeeMore({count=20,text}:{count?:number,text:string}) {
             </button>}
         </p>
     </div>
-
   )
 }

@@ -29,7 +29,7 @@ export default function App() {
           <Route path='/admin/auth/reset-password' element={<ResetPassword/>}/>
           <Route path='/admin/services' element={<ServiceList/>}/>
           <Route path='/admin/services/add' element={<NewService/>}/>
-          {/* <Route path='/admin/services/:id' element={<ServiceDetail/>}/> */}
+          <Route path='/admin/services/:id' element={<ServiceDetail/>}/>
           <Route path='*' element={<div className='section-header h-screen grid place-content-center'>In Development</div>}/>
       </Routes>
       </QueryProvider>

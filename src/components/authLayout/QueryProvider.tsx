@@ -8,11 +8,13 @@ export default function QueryProvider({children}:{children:React.ReactNode}) {
     // useEffect(()=>{
     //     navigate("/admin/dashboard")
     // },[])
+    
     const queryClient = new QueryClient({
       queryCache:new QueryCache({
         onError:(err,data)=>{console.log(err,data)}
       })
     })
+
   return (
     <QueryClientProvider client={queryClient}>
         {children}

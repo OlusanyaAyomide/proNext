@@ -6,31 +6,33 @@ import Dashboard from './pages/Dashboard'
 import Forms from './pages/Forms'
 import Users from './pages/Users'
 import AddUser from './pages/AddUser'
-import Auth from './components/authLayout/Auth'
 import LogIn from './components/authLayout/LogIn'
 import ResetPassword from './components/authLayout/ResetPassword'
 import ServiceList from './components/servcies/ServiceList'
 import NewService from './pages/NewService'
 import ServiceDetail from './pages/ServiceDetail'
+import QueryProvider from './components/authLayout/QueryProvider'
 
 export default function App() {
+
   return (
     <BrowserRouter>
       <ScrollRestore/>
+      <QueryProvider>
       <Routes>
-        <Route path='/' element={<LandingPage/>}/>
-        <Route path='/admin/dashboard' element={<Dashboard/>}/>
-        <Route path='/admin/forms' element={<Forms/>}/>
-        <Route path='/admin/users' element={<Users/>}/>
-        <Route path='/admin/users/add' element={<AddUser/>}/>
-        <Route path='/admin/auth/login' element={<LogIn/>}/>
-        <Route path='/admin/auth/reset-password' element={<ResetPassword/>}/>
-        <Route path='/admin/services' element={<ServiceList/>}/>
-        <Route path='/admin/services/add' element={<NewService/>}/>
-        <Route path='*' element={<div className='section-header h-screen grid place-content-center'>In Development</div>}/>
-        {/* <Route path='/admin/services/:id' element={<ServiceDetail/>}/> */}
-        {/* <Route path='/admin/auth' element={<Auth/>}/> */}
+          <Route path='/' element={<LandingPage/>}/>
+          <Route path='/admin/dashboard' element={<Dashboard/>}/>
+          <Route path='/admin/forms' element={<Forms/>}/>
+          <Route path='/admin/users' element={<Users/>}/>
+          <Route path='/admin/users/add' element={<AddUser/>}/>
+          <Route path='/admin/auth/login' element={<LogIn/>}/>
+          <Route path='/admin/auth/reset-password' element={<ResetPassword/>}/>
+          <Route path='/admin/services' element={<ServiceList/>}/>
+          <Route path='/admin/services/add' element={<NewService/>}/>
+          {/* <Route path='/admin/services/:id' element={<ServiceDetail/>}/> */}
+          <Route path='*' element={<div className='section-header h-screen grid place-content-center'>In Development</div>}/>
       </Routes>
+      </QueryProvider>
   </BrowserRouter>
   )
 }

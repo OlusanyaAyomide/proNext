@@ -17,7 +17,7 @@ export default function Footer() {
         <h3 className="text-lg mt-8 font-bold mb-8 md:pl-2">Our Partners</h3>
         <div className="flex justify-around flex-wrap relative z-30 flex-center">
             {Array(4).fill(0).map((_,key)=>(
-                <div className='w-6/12 max-sm:px-3  sm:w-3/12 mb-4'>
+                <div key={key} className='w-6/12 max-sm:px-3  sm:w-3/12 mb-4'>
                     <img src={`partner${key+1}.png`} alt="" className='shrink-0 block max-w-[100px] mb-3 mr-1'/>
                 </div>
             ))}

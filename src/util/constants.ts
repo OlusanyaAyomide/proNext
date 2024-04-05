@@ -36,22 +36,22 @@ export const _howItWorksTalent =[
     {
         image:"/work1.png",
         title:"Fill Details and submit Resume",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:`When you submit your details and resume, we initiate the process of matching your profile to available positions or projects. Our system utilizes advanced algorithms to analyze the candidate's qualifications, skills, and experience against the requirements of our current openings. We prioritize finding the best possible fit for both the candidate and the clients we represent, ensuring they are a perfect match.`
     },
     {
         image:"/work2.png",
         title:"Get Notification  and Interview details",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:`Once candidates have been matched to a job opening, we promptly reach out to them via email to inform them of the available position and provide interview details. This email includes essential information such as the job title, location (if applicable), job description, and any other pertinent details related to the position. Additionally, we provide details regarding the interview process, including dates, times, and instructions on how to prepare.`
     },
     {
         image:"/work3.png",
         title:"Go for Interview on iterview Date",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:'We provide comprehensive support to candidates thr1oughout the interview process, offering guidance on techniques, company culture insights, and addressing their concerns. We maintain regular communication, updating candidates on application status and next steps. Our commitment extends to preparing candidates until they walk into the interview, addressing any last-minute inquiries, and providing additional resources for confidence.'
     },
     {
         image:"/work4.png",
         title:"Get Hired",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:'We prioritize providing candidates with final feedback at the conclusion of their application process. If they are not selected for the job, we offer constructive feedback to help them understand why and improve for future interviews. Additionally, we actively endorse them for other suitable positions that match their profile. Our aim is to support candidates even if they are not successful initially, guiding them towards opportunities where they can thrive and continue their career growth.'
     },
 ]
 
@@ -60,22 +60,22 @@ export const _howItWorksTalentSeeker =[
     {
         image:"/work5.png",
         title:"Fill Details of Your Company",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:`Once you click "Hire a Talent," you'll fill out a form with your company details, including name, industry, location, and contact information. You can also specify any requirements or preferences you have for the talent you're seeking. Additionally, you'll have the option to schedule a call with one of our representatives.`
     },
     {
         image:"/work6.png",
         title:"Get Business Term and Agreement",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:`Once your submission is received, a dedicated Point of Contact (POC) is assigned to you. They will promptly contact you via email to confirm your schedule. During this call, we'll discuss your project timeline, budget, skill requirements, and any other important details to ensure we understand your needs fully.`
     },
     {
         image:"/work7.png",
         title:"Agree and Submit Vacancies",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:'After your call with your Point of Contact (POC), a specialized hiring plan will be sent to you. This plan will be tailored to meet your specific hiring needs, taking into account the details discussed during the call. It will outline the steps, timeline, and resources involved in finding and securing the right talent for your project or position. Our goal is to provide you with a comprehensive strategy that maximizes efficiency and ensures a successful outcome in your hiring process.'
     },
     {
         image:"/work8.png",
         title:"Get Talent",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam '
+        content:`We spring into action immediately to fulfill your hiring needs. Once your specialized hiring plan is agreed upon, our team begins the process of sourcing, screening, and presenting suitable candidates for your consideration. We prioritize efficiency without compromising on quality, aiming to swiftly connect you with the ideal talent to meet your requirements. Rest assured, we are dedicated to delivering timely and effective solutions to address your hiring needs promptly.`
     },
 ]
 

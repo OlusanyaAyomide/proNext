@@ -7,10 +7,10 @@ export default function ScrollRestore(){
 
   // Automatically scrolls to top whenever pathname changes
   useEffect(() => {
-window.scrollTo({
+    window.scrollTo({
     top:0,
     behavior:"smooth"
-});
+  });
   }, [pathname]);
   return null
 }

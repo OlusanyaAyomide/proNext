@@ -2,6 +2,7 @@ import React from 'react'
 import { _howItWorksTalent, _howItWorksTalentSeeker } from '../../util/constants'
 import { Button } from '../ui/button'
 import TriggerView from '../util-component/TriggerView'
+import SeeMore from '../util-component/SeeMore'
 
 export default function HowItWorks() {
   return (
@@ -17,7 +18,7 @@ export default function HowItWorks() {
                         </div>
                     </div> 
                     <h1 className="text-center mb-3 mt-4 lg:-mt-8 text-pro-blue text-lg font-bold">{item.title}</h1>
-                    <p className='text-center'>{item.content}</p>
+                    <SeeMore text={item.content}/>
                 </TriggerView>
             ))}
         </div>
@@ -35,7 +36,7 @@ export default function HowItWorks() {
                             </div>
                         </div> 
                         <h1 className="text-center mb-3 mt-4 lg:-mt-8 text-pro-blue text-lg font-bold">{item.title}</h1>
-                        <p className='text-center'>{item.content}</p>
+                        <SeeMore text={item.content}/>
                     </TriggerView>
                 ))}
             </div>

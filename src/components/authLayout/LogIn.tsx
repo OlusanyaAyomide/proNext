@@ -6,18 +6,43 @@ import { useForm ,SubmitHandler} from 'react-hook-form';
 import { ILogIn, loginSchema } from '../../hooks/validation';
 import UserInput from '../users/add/UserInput';
 import { useNavigate } from 'react-router-dom';
-
+import { usePostRequest } from '../../hooks/usePostRequests';
+import { IUserLogin } from '../../util/resInterfaces';
+import Loader from '../util-component/Loader';
+import { useCookies } from 'react-cookie';
+import { AxiosError, AxiosResponse } from 'axios';
+import { usePostErrors } from '../../hooks/usePostErrors';
 
 export default function LogIn() {
     const navigate = useNavigate()
     const {register,handleSubmit,formState:{errors},setValue} = useForm<ILogIn>(
     {resolver:yupResolver(loginSchema)}
     )
-    // const his
+
+    const [,setCookie] = useCookies(['authCookie'])
+    
+    const trigger = usePostErrors()
+    
+    const {mutate,isPending} = usePostRequest<IUserLogin,ILogIn>({url:"/admin/login",
+        onSuccess:(data:AxiosResponse<IUserLogin>)=>{
+            console.log(data.data)
+            const today = new Date()
+            const token = data.data.data?.token
+            const tomorrow = new Date(today.setDate(today.getDate() + 1))
+            setCookie("authCookie",token,{
+                expires:tomorrow
+            })
+            navigate("/admin/dashboard")
+        },onError:(data:AxiosError<{data:any}>)=>{
+            console.log(data,"Onerror data")
+            console.log(data.response)
+            trigger(data)
+        }})
 
     const onSubmit:SubmitHandler<ILogIn>= async (data)=>{
         console.log(data)
-        navigate("/admin/dashboard")
+        mutate(data)
+ 
     }
     return (
         <Auth>
@@ -42,7 +67,10 @@ export default function LogIn() {
                     title='Enter Password'
                     type="password"
                 />
-                <Button className='mt-10 rounded-md block mx-auto w-full px-10'>Log In User</Button>
+                <Button disabled={isPending} 
+                    className='mt-10 rounded-md block mx-auto w-full px-10'>
+                        {!isPending?<span>Log in user</span>:<Loader/>}
+                </Button>
             </form>
   
         </Auth>

@@ -6,6 +6,7 @@ import { Svgs } from '../../util/svgs'
 import { Sheet, SheetClose, SheetContent, SheetOverlay, SheetTrigger } from '../ui/sheet'
 import useScrollCheck from '../../hooks/useScrollTracker'
 import {Link} from "react-scroll"
+import ContactDialog from '../util-component/ContactDialog'
 
 export default function Header() {
     const isScrolled = useScrollCheck()
@@ -20,21 +21,15 @@ export default function Header() {
                     <Link to={item.id} smooth offset={-50} className='mr-5 block mb-1 cursor-pointer relative before:-left-[10%] before:bottom-0 hover:before:bg-main before:w-0 before:absolute hover:text-main hover:before:w-[120%] before:h-[2px] before:transition-all before:duration-300  text-pro-blue font-semibold' key={key}>{item.text}</Link>
                 ))}
             </div>
-            <Button variant={"outline"} className='flex-center rounded-3xl max-md:ml-4 px-6 border-[1.5px]'>
-                <Svgs.CallSvg className='mr-3'/>
-                <span className='font-medium'>Contact Us</span>
-            </Button>
+            <ContactDialog/>
         </div>
         <Sheet>
             <SheetTrigger className='md:hidden'>
                 <Svgs.MenubarSvg className='scale-110'/>
             </SheetTrigger>
             <SheetClose ref={ref} className='hidden'></SheetClose>
-            <SheetContent side="right" className='md:hidden paddingx w-[250px]'>
-                <Button variant={"outline"} className='flex-center my-6 rounded-3xl px-6 border-[1.5px]'>
-                    <Svgs.CallSvg className='mr-3'/>
-                    <span className='font-medium'>Contact Us</span>
-                </Button>   
+            <SheetContent side="right" className='md:hidden paddingx w-[250px]'>        
+                <ContactDialog/>
                 {_homeNavMenu.map((item,key)=>(
                     <Link onClick={()=>{ref.current?.click()}} to={item.id} smooth offset={-50} className='block mb-3 w-fit cursor-pointer relative before:-left-[10%] before:bottom-0 hover:before:bg-main before:w-0 before:absolute hover:text-main hover:before:w-[120%] before:h-[2px] before:transition-all before:duration-300' key={key}>{item.text}</Link>
                 ))}

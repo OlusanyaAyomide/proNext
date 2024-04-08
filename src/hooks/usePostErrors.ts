@@ -14,21 +14,22 @@ export const usePostErrors  = ()=>{
             toast({
                 title:"Request Aborted",
                 description:"This might be due to poor network",
-                variant:"destructive"
+                className:"h-fit border-red-500 border"
             })
         }
         if(isNetwork){
             toast({
                 title:"Unable to reach server",
                 description:"This is likely due to poor internet connection",
-                variant:"destructive"
+                className:"h-fit border-red-500 border"
             })
         }
         if(isBadRequest){
             toast({
                 title:"Bad Request",  
                 description:error.response?.data?.message || "wrong information suppllied",
-                variant:"destructive",
+                className:"h-fit border-red-500 border"
+                // variant:"destructive",
             })
         }
     }

@@ -15,28 +15,33 @@ export default function ServiceList() {
         </div>
         <div className="mt-6 flex-center flex-wrap">
         {_mockServices.map((item,key)=>(
-                <Link to={`/admin/services/${key+1}`} className='block w-full mb-5 sm:w-6/12 lg:w-4/12 sm:px-2' key={key}>
-                    <div key={key} className='relative w-full '>
-                        <div className="mb-4  mx-auto max-w-[420px]">
-                            <div className="aspect-[3/2] rounded-md overflow-hidden">
-                                <img src={item.image} className='h-full w-full object-contain'/>
-                            </div>
-                            <h1 className="mt-4  text-pro-blue text-base font-bold">{item.title}</h1>
-                        </div>
-                        <AlertDialog>
-                            <AlertDialogTrigger asChild className='absolute cursor-pointer top-0 right-1'>
-                                <Svgs.cancelSvg className='scale-50'/>
-                            </AlertDialogTrigger>
-                            <AlertDialogContent>
-                                <h1 className="text-center font-semibold text-base">Are you sure you want to delete this service</h1>
-                                <div className='mt-4 mb-6 flex justify-around'>
-                                  <AlertDialogCancel className='px-6'>Cancel</AlertDialogCancel>
-                                  <AlertDialogAction className='px-6'>Continue</AlertDialogAction>
+                <div key={key} className='mb-5 sm:w-6/12 lg:w-4/12 sm:px-2 relative max-w-[380px]'>
+                    <Link to={`/admin/services/${key+1}`} className='block w-full' key={key}>
+                        <div key={key} className='relative w-full '>
+                            <div className="mb-4  mx-auto max-w-[420px]">
+                                <div className="aspect-[3/2] rounded-md overflow-hidden">
+                                    <img src={item.image} className='h-full w-full object-contain'/>
                                 </div>
-                            </AlertDialogContent>
-                        </AlertDialog>
-                    </div>
-                </Link>
+                                <h1 className="mt-4  text-pro-blue text-base font-bold">{item.title}</h1>
+                            </div>
+                        </div>
+                    </Link>
+                    <AlertDialog>
+                        <AlertDialogTrigger  className='absolute cursor-pointer top-0 right-1'>
+                            <>
+                                <Svgs.cancelSvg className='scale-50'/>
+                            </> 
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                            <h1 className="text-center font-semibold text-base">Are you sure you want to delete this service</h1>
+                            <div className='mt-4 mb-6 flex justify-around'>
+                              <AlertDialogCancel className='px-6'>Cancel</AlertDialogCancel>
+                              <AlertDialogAction className='px-6'>Continue</AlertDialogAction>
+                            </div>
+                        </AlertDialogContent>
+                    </AlertDialog>
+                </div>
+
 
             ))}
         </div>

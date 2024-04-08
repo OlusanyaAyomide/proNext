@@ -8,7 +8,7 @@ export default function Layout({children}:{children:React.ReactNode}) {
 
     const navigate = useNavigate()
     const [{authCookie},setCookie] = useCookies(["authCookie"])
-    console.log(authCookie)
+    // console.log(authCookie)
     useEffect(()=>{
         if(authCookie){
 

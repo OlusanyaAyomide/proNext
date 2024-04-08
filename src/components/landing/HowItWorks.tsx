@@ -1,8 +1,11 @@
 import React from 'react'
-import { _howItWorksTalent, _howItWorksTalentSeeker } from '../../util/constants'
+import { _howItWorksTalent, _howItWorksTalentSeeker, slideImages2, sliderImages } from '../../util/constants'
 import { Button } from '../ui/button'
 import TriggerView from '../util-component/TriggerView'
 import SeeMore from '../util-component/SeeMore'
+import JobDialog from '../util-component/JobDialog'
+import FindJobForm from './FindJobForm'
+import HireTalentForm from './HireTalentForm'
 
 export default function HowItWorks() {
   return (
@@ -23,7 +26,12 @@ export default function HowItWorks() {
             ))}
         </div>
         <TriggerView side='up' className='w-fit mx-auto'>
-            <Button className='mx-auto px-6 block mt-1'>Find a Job</Button>
+            <JobDialog slide={slideImages2} form={<FindJobForm/>}>
+                <Button asChild className='px-6 mr-7'>
+                        <span>Find a Job</span>
+                </Button>
+            </JobDialog>
+
         </TriggerView>
         <div className="mt-16">
             <h1 className="font-thin my-3 mb-10 text-lg">How It Works As a  Talent Seeker</h1>
@@ -41,8 +49,13 @@ export default function HowItWorks() {
                 ))}
             </div>
         </div>
+
         <TriggerView side='right' className='w-fit mx-auto'>
-            <Button variant={"outline"} className='mx-auto px-6 block'>Hire a Talent</Button>
+            <JobDialog form={<HireTalentForm/>} slide={sliderImages}>
+                <Button asChild variant={"outline"} className='px-6'>
+                    <span>Hire a Talent</span>
+                </Button>
+            </JobDialog>
         </TriggerView>
     </div>
   )

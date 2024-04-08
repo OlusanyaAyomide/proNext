@@ -84,32 +84,32 @@ export const _mockServices =[
     {
         image:"/service.png",
         title:"Call Center Jobs",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam'   
+        content:'We excel in sourcing top-tier talent for volume hiring needs, tailored precisely to your business demands. Our specialized sourcing services leverage advanced technologies and strategic approaches to swiftly identify and engage a large pool of qualified candidates. With a keen focus on efficiency and quality, we ensure that your organization has access to the right candidates at the right time, enabling seamless scaling and growth.'   
     },
     {
         image:"/service.png",
         title:"Health Care",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam'   
+        content:'We specialize in sourcing and recruiting talented individuals fluent in various languages to help your organization thrive internationally. From initial candidate screening to final placement, we ensure you have access to the right linguistic skills and cultural competencies. With Pronext by your side, you can confidently build a multilingual team that excels in driving cross-cultural communication and fostering business growth'   
     },
     {
         image:"/service.png",
         title:"Logistics",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam'   
+        content:"We understand the challenges businesses face in managing their recruitment processes efficiently while focusing on their core operations. That's where our RPO services come in. By entrusting us with your recruitment needs, you can rest assured that our expert team will handle everything from candidate sourcing and screening to interviewing and onboarding"   
     },
     {
         image:"/service.png",
         title:"Insurance",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam'   
+        content:"At Pronext, we specialize in sourcing and recruiting top-tier professionals for all your technical needs. Whether you're looking for software developers, cybersecurity experts, or AI specialists, we have the expertise to connect you with the best talent in the industry. Our comprehensive tech hiring services streamline the recruitment process, saving you time and resources while ensuring you find the perfect fit for your team."
     },
     {
         image:"/service.png",
         title:"Health Care",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam'   
+        content:"We understand the importance of laying a solid foundation with the right talent. Our specialized services focus on sourcing and recruiting enthusiastic individuals ready to embark on their professional journey and contribute to your organization's success. Whether you seek fresh graduates, interns, or apprentices."   
     },
     {
         image:"/service.png",
         title:"Logistics",
-        content:'Lorem ipsum dolor sit amet consectetur. A feugiat ullamcorper volutpat amet sapien. Sed risus rhoncus mattis blandit vitae nibh risus. Id pellentesque convallis nec amet amet viverra vitae posuere sed. Praesent sit mauris nulla amet non ultrices dolor suspendisse aliquam. Scelerisque est vulputate nam at quam'   
+        content:"Our leadership hiring services extend beyond qualifications to seek visionary leaders who ignite company culture. Leveraging expertise, we pinpoint high-caliber candidates with the ideal mix of skills and leadership qualities. Our streamlined process saves you time and resources, offering a confidential search for talent that drives your business forward."
     },
 
 ]
@@ -399,3 +399,78 @@ export const _mockUsers=[
         email:"feil.wallace@kunde.us"
     },
 ]
+
+export const sliderImages =[
+    {
+        title:"Fill Details Of Your Company",
+        content:`Once you click "Hire a Talent," you'll fill out a form with your company details, including name, industry, location, and contact information. You can also specify any requirements or preferences you have for the talent you're seeking. Additionally, you'll have the option to schedule a call with one of our representatives.`,
+        image:"/support1.png"      
+    },
+    {
+        title:"Get A Dedicated POC",
+        content:`Once your submission is received, a dedicated Point of Contact (POC) is assigned to you. They will promptly contact you via email to confirm your schedule. During this call, we'll discuss your project timeline, budget, skill requirements, and any other important details to ensure we understand your needs fully.`,
+        image:"/support2.png"      
+    },
+    {
+        title:"Get Specialized hiring plans tailored to meet your hiring needs",
+        content:`Once After your call with your Point of Contact (POC), a specialized hiring plan will be sent to you. This plan will be tailored to meet your specific hiring needs, taking into account the details discussed during the call. It will outline the steps, timeline, and resources involved in finding and securing the right talent for your project or position. Our goal is to provide you with a comprehensive strategy that maximizes efficiency and ensures a successful outcome in your hiring process.`,
+        image:"/support3.png"      
+    },
+    {
+        title:`Get Talent : We get to work immediately to fulfill your hiring need`,
+        content:`Once After your call with your Point of Contact (POC), a specialized hiring plan will be sent to you. This plan will be tailored to meet your specific hiring needs, taking into account the details discussed during the call. It will outline the steps, timeline, and resources involved in finding and securing the right talent for your project or position. Our goal is to provide you with a comprehensive strategy that maximizes efficiency and ensures a successful outcome in your hiring process.`,
+        image:"/support4.png"      
+    },
+]
+
+
+export const slideImages2=[
+    {
+        title:"Fill Details and Submit Resume ",
+        content:`When you submit your details and resume, we initiate the process of matching your profile to available positions or projects. Our system utilizes advanced algorithms to analyze the candidate's qualifications, skills, and experience against the requirements of our current openings. We prioritize finding the best possible fit for both the candidate and the clients we represent, ensuring they are a perfect match.`,
+        image:"/support8.png"      
+    },
+    {
+        title:"Get Notification And Interview Details",
+        content:`Once candidates have been matched to a job opening, we promptly reach out to them via email to inform them of the available position and provide interview details. This email includes essential information such as the job title, location (if applicable), job description, and any other pertinent details related to the position. Additionally, we provide details regarding the interview process, including dates, times, and instructions on how to prepare.`,
+        image:"/support7.png"      
+    },
+    {
+        title:"Walkin For An Interview",
+        content:`We provide comprehensive support to candidates thr1oughout the interview process, offering guidance on techniques, company culture insights, and addressing their concerns. We maintain regular communication, updating candidates on application status and next steps. Our commitment extends to preparing candidates until they walk into the interview, addressing any last-minute inquiries, and providing additional resources for confidence.and instructions on how to prepare.`,
+        image:"/support6.png"      
+    },
+    {
+        title:`Final Feedback`,
+        content:`We prioritize providing candidates with final feedback at the conclusion of their application process. If they are not selected for the job, we offer constructive feedback to help them understand why and improve for future interviews. Additionally, we actively endorse them for other suitable positions that match their profile. Our aim is to support candidates even if they are not successful initially, guiding them towards opportunities where they can thrive and continue their career growth.`,
+        image:"/support5.png"      
+    },
+]
+
+
+export const qualifications=[
+    {value:"hs_graduate",label:"HS Graduate (old curriculum)"},
+    {value:"shs_graduate",label:"Shs Graduate"},
+    {value:"1st_year_college_undergraduate",label:"1st Year College Undergraduate"},
+    {value:"2nd_year_college_undergraduate",label:"2nd Year College Undergraduate"},
+    {value:"3rd_year_college_undergraduate",label:"3rd Year College Undergraduate"},
+    {value:"4th_year_college_undergraduate",label:"4th Year College Undergraduate"},
+    {value:"college_graduate",label:"College Graduate"},
+    {value:"Masters/PHD",label:"Masters /PHD"}
+]
+
+export const _enquiryCategories = [
+    { value: "general_inquiry", label: "General Inquiry" },
+    { value: "product_support", label: "Product Support" },
+    { value: "technical_support", label: "Technical Support" },
+    { value: "sales_inquiry", label: "Sales Inquiry" },
+    { value: "customer_feedback", label: "Customer Feedback" },
+    { value: "billing_inquiry", label: "Billing Inquiry" },
+    { value: "partnership_opportunities", label: "Partnership Opportunities" },
+    { value: "media_inquiries", label: "Media Inquiries" },
+    { value: "employment_opportunities", label: "Employment Opportunities" },
+    { value: "website_feedback", label: "Website Feedback" }
+];
+
+
+export const _contactinfo = `Once you click "Hire a Talent," you'll fill out a form with your company details, including name, industry, location, and contact information. You can also specify any requirements or preferences you have for the talent you're seeking. Additionally, you'll have the option to schedule a call with one of our representatives.`

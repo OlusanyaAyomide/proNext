@@ -8,6 +8,8 @@ import { Textarea } from '../ui/textarea';
 import { Avatar,AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Svgs } from '../../util/svgs';
+import { Form } from 'react-router-dom';
+import FormSelect from '../util-component/FormSelect';
 
 export default function AddService() {
 
@@ -60,6 +62,7 @@ export default function AddService() {
                     {errors.image && <span className="text-red-500 absolute -bottom-2 whitespace-nowrap left-2 text-[13px]">{errors.image.message}</span>}
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className='mt-4 flex-center  flex-wrap'>
+                    
                 <UserInput
                     name='title'
                     placeholder='Enter The TItle Of The Servive'
@@ -68,24 +71,19 @@ export default function AddService() {
                     className=''
                     title='Title'
                 />
-                <div className="w-full sm:pr-2 sm:w-6/12 mb-6 relative">
-                    <h3 className='ml-[2px] font-medium text-support mb-[2px] md:text-[15px]'>Select Category</h3>
-                    <Select onValueChange={(val)=>{setValue("category",val)}}>
-                        <SelectTrigger className='w-full bg-offwhite border-0 flex justify-between '>
-                            <SelectValue placeholder=""/>
-                        </SelectTrigger>
-                        <SelectContent>
-                            <SelectGroup>
-                                <SelectItem value='health'>Health Care</SelectItem>
-                                <SelectItem value='logistic'>Logistics</SelectItem>
-                                <SelectItem value='insurance'>Insurance</SelectItem>
-                                <SelectItem value='wfh'>WFH</SelectItem>
 
-                            </SelectGroup>
-                        </SelectContent>
-                    </Select>
-                    {errors.category && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.category.message}</span>}
-                </div>
+                <FormSelect
+                    className='w-full sm:pr-2 sm:w-6/12 mb-6 relative'
+                    name='category'
+                    setValue={setValue}
+                    items={[{value:"health",label:"Health Care"},
+                            {value:"logistic",label:"Logistics"},
+                            {value:"insurance",label:"Insurance"},
+                            {value:"wfh",label:"WFH"},]}    
+                    error={errors.category?.message}   
+                    title='Select Category'   
+                />
+
                 <UserInput
                     name='city'
                     placeholder='Enter Your Service City'
@@ -94,21 +92,13 @@ export default function AddService() {
                     className=''
                     title='City'
                 />
-                <div className='w-full'>
-                    <UserInput
-                        name='city'
-                        placeholder='Enter Your Service City'
-                        register={register}
-                        error={errors.city?.message}
-                        className='sm:w-6/12'
-                        title='City'
-                    />
-                </div>
+
                 <div className="w-full sm:w-6/12 relative h-[200px]">
                     <Textarea {...register("description")} className='resize-none bg-offwhite rounded-md ring-0 focus-visible:ring-0 h-full'>
                     </Textarea>
                     {errors.description && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.description.message}</span>}
                 </div>
+
                 <div className="w-full sm:w-6/12 sm:pl-2 sm:flex sm:items-end sm:h-[200px] max-sm:mt-5">
                     <Button className='mt-5 block mx-auto px-10'>Add Service</Button>
                 </div>

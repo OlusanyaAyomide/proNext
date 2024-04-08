@@ -14,7 +14,7 @@ interface IInputField extends React.InputHTMLAttributes<HTMLInputElement> {
 
 export default function UserInput({className,type="text",name,title,disabled=false,placeholder,error,register,...rest}:IInputField) {
   return (
-    <div className={cn("mb-6 w-full relative",className)}>
+    <div className={cn("mb-7 w-full relative",className)}>
         <h1 className="ml-[2px] font-medium text-support mb-[2px] md:text-[15px]">{title}</h1>
 
         {/* condtionally register register input form if register is passed in */}
@@ -22,7 +22,7 @@ export default function UserInput({className,type="text",name,title,disabled=fal
         :
         <Input {...rest} type={type} disabled={disabled} placeholder={placeholder} className='focus-visible:border bg-offwhite focus-visible:ring-0 h-12'/>
         }
-        {error && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{error}</span>}
+        {error && <span className="text-red-500 absolute -bottom-5 left-2">{error}</span>}
     </div>
   )
 }

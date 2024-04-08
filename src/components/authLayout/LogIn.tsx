@@ -10,18 +10,16 @@ import { usePostRequest } from '../../hooks/usePostRequests';
 import { IUserLogin } from '../../util/resInterfaces';
 import Loader from '../util-component/Loader';
 import { useCookies } from 'react-cookie';
-import { AxiosError, AxiosResponse } from 'axios';
-import { usePostErrors } from '../../hooks/usePostErrors';
+import {  AxiosResponse } from 'axios';
+
 
 export default function LogIn() {
     const navigate = useNavigate()
-    const {register,handleSubmit,formState:{errors},setValue} = useForm<ILogIn>(
+    const {register,handleSubmit,formState:{errors}} = useForm<ILogIn>(
     {resolver:yupResolver(loginSchema)}
     )
 
     const [,setCookie] = useCookies(['authCookie'])
-    
-    const trigger = usePostErrors()
     
     const {mutate,isPending} = usePostRequest<IUserLogin,ILogIn>({url:"/admin/login",
         onSuccess:(data:AxiosResponse<IUserLogin>)=>{
@@ -33,10 +31,6 @@ export default function LogIn() {
                 expires:tomorrow
             })
             navigate("/admin/dashboard")
-        },onError:(data:AxiosError<{data:any}>)=>{
-            console.log(data,"Onerror data")
-            console.log(data.response)
-            trigger(data)
         }})
 
     const onSubmit:SubmitHandler<ILogIn>= async (data)=>{

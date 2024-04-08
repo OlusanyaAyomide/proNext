@@ -5,11 +5,12 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm ,SubmitHandler} from 'react-hook-form';
 import { INewUserSchema, newUserSchema } from '../../../hooks/validation';
 import UserInput from './UserInput';
-import { Select, SelectGroup, SelectTrigger,SelectContent, SelectValue, SelectItem } from '../../ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { Calendar } from '../../ui/calendar';
 import { Textarea } from '../../ui/textarea';
 import { Avatar,AvatarFallback, AvatarImage } from '../../ui/avatar';
+import FormSelect from '../../util-component/FormSelect';
+import { formatDate } from '../../lib/utils';
 
 
 export default function UserAdd() {
@@ -98,7 +99,9 @@ export default function UserAdd() {
                 <h3 className='ml-[2px] font-medium  text-gray-800 text-support mb-[2px] md:text-[15px]'>Date Of Birth</h3>
                 <Popover>
                     <PopoverTrigger className='bg-offwhite w-full flex justify-between px-2 border rounded-md items-center h-10'>
-                        <span>Select BirthDate</span>
+                        <span>
+                            {date?formatDate(date):"Select Date"}
+                        </span>
                         <Svgs.ChevronSvg/>
                     </PopoverTrigger>
                     <PopoverContent>
@@ -115,22 +118,18 @@ export default function UserAdd() {
                 </Popover>
                 {errors.dateOfBirth && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.dateOfBirth.message}</span>}
             </div>
-            <div className="w-full pl-2 sm:w-6/12 mb-6 relative">
-                <h3 className='ml-[2px] font-medium text-support mb-[2px] md:text-[15px]'>Select Gender</h3>
-                <Select onValueChange={(val)=>{setValue("gender",val)}}>
-                    <SelectTrigger className='w-full bg-offwhite border-0 flex justify-between '>
-                        <SelectValue placeholder=""/>
-                    </SelectTrigger>
-                    <SelectContent>
-                        <SelectGroup>
-                            <SelectItem value='Male'>Male</SelectItem>
-                            <SelectItem value='Female'>FeMale</SelectItem>
-                            <SelectItem value='others'>Othere</SelectItem>
-                        </SelectGroup>
-                    </SelectContent>
-                </Select>
-                {errors.gender && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.gender.message}</span>}
-            </div>
+
+            <FormSelect
+                className='w-full pl-2 sm:w-6/12 mb-6'
+                setValue={setValue}   
+                name='gender'
+                items={[{value:"Male",label:"Male"},
+                        {value:"Female",label:"Female"},
+                        {value:"Others",label:"Others"}]} 
+                title='Select Gender'
+                error={errors.gender?.message}
+            />
+
             <div className="w-full sm:w-6/12 relative h-[200px]">
                 <Textarea {...register("address")} className='resize-none bg-offwhite rounded-md ring-0 focus-visible:ring-0 h-full'>
                 </Textarea>

@@ -120,7 +120,7 @@ export default function UserAdd() {
             </div>
 
             <FormSelect
-                className='w-full pl-2 sm:w-6/12 mb-6'
+                className='w-full pl-2 sm:w-6/12 mb-4'
                 setValue={setValue}   
                 name='gender'
                 items={[{value:"Male",label:"Male"},

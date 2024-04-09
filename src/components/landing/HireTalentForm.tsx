@@ -67,7 +67,7 @@ export default function HireTalentForm() {
             error={errors.proposal?.message}
             selectTitle='Select Proposal Type'
             setValue={setValue}
-            className='mb-6'
+            className='mb-4'
             title='Type of Proposal'
             items={[{value:"volume_hiring",label:"Volume Hiring"},
                   {value:"language_hiring",label:"Language Hiring"},

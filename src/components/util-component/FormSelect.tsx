@@ -36,7 +36,7 @@ export default function FormSelect({setValue,className,error,items,selectTitle,n
     }
 
     return (
-    <div className={cn("relative",className)}>
+    <div className={cn("relative mb-4",className)}>
     <h3 className='ml-[2px] font-medium text-support mb-[2px] md:text-[15px]'>{title}</h3>
     <Select onValueChange={(val)=>{
         if(IsdroppedDown){

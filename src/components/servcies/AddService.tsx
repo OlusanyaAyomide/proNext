@@ -73,7 +73,7 @@ export default function AddService() {
                 />
 
                 <FormSelect
-                    className='w-full sm:pr-2 sm:w-6/12 mb-6 relative'
+                    className='w-full sm:pr-2 sm:w-6/12 mb-4 relative'
                     name='category'
                     setValue={setValue}
                     items={[{value:"health",label:"Health Care"},

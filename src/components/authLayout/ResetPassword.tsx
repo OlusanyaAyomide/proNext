@@ -6,14 +6,20 @@ import { useForm ,SubmitHandler} from 'react-hook-form';
 import { ILogIn,resetSchema} from '../../hooks/validation';
 import UserInput from '../users/add/UserInput';
 import { Link } from 'react-router-dom';
+import { usePostRequest } from '../../hooks/usePostRequests';
+import Loader from '../util-component/Loader';
 
 export default function ResetPassword() {
-    const {register,handleSubmit,formState:{errors},setValue} = useForm<{email:string}>(
+    const {register,handleSubmit,formState:{errors},reset} = useForm<{email:string}>(
     {resolver:yupResolver(resetSchema)}
     )
 
+
+    const {mutate,isPending} = usePostRequest<void,{email:string}>({url:"/admin/forgot/password",showSuccess:"verification sent to email",
+        onSuccess:()=>{reset()}})
+
     const onSubmit:SubmitHandler<{email:string}>= async (data)=>{
-        console.log(data)
+        mutate(data)
     }
     return (
         <Auth>
@@ -29,7 +35,9 @@ export default function ResetPassword() {
                     className=''
                     title='Enter Email Address'
                 />
-                <Button className='mt-10 rounded-md block mx-auto w-full px-10'>Reset Password</Button>
+                <Button disabled={isPending} className='mt-10 rounded-md block mx-auto w-full px-10'>
+                    {isPending?<Loader/>:<span>Reset Password</span>}
+                </Button>
                 <h1 className="my-3 text-center font-bold">or</h1>
                 <Link to={"/admin/auth/login"}>
                     <Button variant={"outline"} className='rounded-md max-w-[250px] w-full mx-auto block'>Sign In</Button>

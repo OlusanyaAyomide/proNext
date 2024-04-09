@@ -117,7 +117,7 @@ export default function FindJobForm() {
                 error={errors.qualification?.message}
                 selectTitle='Select education qualification'
                 setValue={setValue}
-                className='mb-6 w-7/12 sm:w-6/12'
+                className='mb-4 w-7/12 sm:w-6/12'
                 title='Educational Qualification'
                 items={qualifications}  
                 others
@@ -138,7 +138,7 @@ export default function FindJobForm() {
             error={errors.experienceAccount?.message}
             selectTitle='Select your experience account'
             setValue={setValue}
-            className='mb-6 w-7/12 sm:w-6/12 sm:pl-2'
+            className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
             title='Experience account '
             items={qualifications}  
             others
@@ -149,7 +149,7 @@ export default function FindJobForm() {
             error={errors.location?.message}
             selectTitle='Select your location'
             setValue={setValue}
-            className='mb-6 w-7/12 sm:w-6/12 sm:pl-2'
+            className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
             title='Location '
             items={[{value:"lagos",label:'lagos'},
                     {value:"abuja",label:'Abuja'},
@@ -163,7 +163,7 @@ export default function FindJobForm() {
             error={errors.site?.message}
             selectTitle='Select Site'
             setValue={setValue}
-            className='mb-6 w-7/12 sm:w-6/12 sm:pl-2'
+            className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
             title='Site '
             items={[{value:"lagos",label:'lagos'},
                     {value:"abuja",label:'Abuja'},

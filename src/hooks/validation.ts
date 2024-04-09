@@ -80,6 +80,11 @@ export const resetSchema:yup.ObjectSchema<{email:string}>=yup.object({
     email:yup.string().email().required()
 })
 
+export const resetPasswordSchema:yup.ObjectSchema<{password:string}>=yup.object({
+    password:yup.string().required()
+})
+
+
 
 export const newServiceSchema:yup.ObjectSchema<INewService>= yup.object({
     title:yup.string().required(),

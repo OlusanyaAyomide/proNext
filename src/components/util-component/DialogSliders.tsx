@@ -46,7 +46,7 @@ export default function DialogSliders({className,slides}:IDialogSlider) {
       }, [count]);
     
   return (
-    <div className={cn("pt-4  rounded-r-md sticky top-0  bg-[#24BC75] pb-3 overflow-hidden",className)}>
+    <div className={cn("pt-4  rounded-r-md md:sticky top-0  bg-[#24BC75] pb-3 overflow-hidden",className)}>
         <div className="rounded-full h-52 w-52  bg-[#4CD091] px-2 absolute -right-12 -top-4"></div>
         <div className="mx-auto w-fit relative z-20 flex-center">
             <Svgs.customerSvg className='mr-2'/>

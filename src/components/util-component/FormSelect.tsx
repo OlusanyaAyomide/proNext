@@ -17,9 +17,10 @@ interface IFormSelect{
     name:string
     title:string
     others?:boolean 
+    placeholder?:string
 }
 
-export default function FormSelect({setValue,className,error,items,selectTitle,name,title,others}:IFormSelect) {
+export default function FormSelect({setValue,className,error,items,selectTitle,name,title,others,placeholder}:IFormSelect) {
 
     const [IsdroppedDown,setIsDropDown] = useState(false)
     const [otherValue,setOtherValue] =  useState("")
@@ -45,7 +46,7 @@ export default function FormSelect({setValue,className,error,items,selectTitle,n
         setValue(name,val)}}
         >
         <SelectTrigger className='w-full bg-offwhite border-0 flex justify-between '>
-            <SelectValue placeholder="select option">{formatText(otherValue)}</SelectValue>
+            <SelectValue placeholder={placeholder || "Select option"}>{formatText(otherValue)}</SelectValue>
         </SelectTrigger>
         <SelectContent className='max-h-[350px] overflow-auto default-scroll'>
             {selectTitle?

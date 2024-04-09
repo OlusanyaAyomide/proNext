@@ -46,7 +46,7 @@ export default function DialogSliders({className,slides}:IDialogSlider) {
       }, [count]);
     
   return (
-    <div className={cn("pt-4  rounded-r-md  relative bg-[#24BC75] pb-3 overflow-hidden",className)}>
+    <div className={cn("pt-4  rounded-r-md sticky top-0  bg-[#24BC75] pb-3 overflow-hidden",className)}>
         <div className="rounded-full h-52 w-52  bg-[#4CD091] px-2 absolute -right-12 -top-4"></div>
         <div className="mx-auto w-fit relative z-20 flex-center">
             <Svgs.customerSvg className='mr-2'/>
@@ -55,11 +55,11 @@ export default function DialogSliders({className,slides}:IDialogSlider) {
         <div className={cn(`flex relative z-20 w-[400%] transition-all duration-1000 ease-out mt-10  ${count===0?"translate-x-[0%]":count===1?"-translate-x-[25%]":count===2?"-translate-x-[50%]":"-translate-x-[75%]"}`)}>
             {slides.map((item,key)=>(
                 <div  key={key} className='w-[25%] px-2 text-white h-full'>
-                    <div className="mx-auto aspect-[3/2] h-[140px]">
+                    <div className="mx-auto aspect-[3/2] h-[120px]">
                         <img src={item.image} alt="" className='h-full w-full object-contain'/>
                     </div>
                     <h1 className="mt-4 text-center font-bold text-lg ">{item.title}</h1>
-                    <p className="mt-2 mb-6">{item.content}</p>
+                    <p className="mt-2 mb-6 text-[13px]">{item.content}</p>
 
                     <div className="mx-auto gap-x-2 w-fit flex-center">
                         <Button  variant={"ghost"} size={"icon"} disabled={count===0} onClick={handlePrevious} className='rounded-full rotate-180 hover:bg-[#4CD091]'>

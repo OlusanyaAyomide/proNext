@@ -12,24 +12,41 @@ import { formatDate } from '../lib/utils';
 import { qualifications } from '../../util/constants';
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { toast } from '../ui/use-toast';
-import { cloudinaryUploader } from '../util-component/cloudinaryUploader';
+import { cloudinaryUploader, useCloudUpload } from '../util-component/cloudinaryUploader';
+import { imgUrl } from '../util-component/keys';
+import { usePostRequest } from '../../hooks/usePostRequests';
+import { IResHireForm } from '../../util/resInterfaces';
+import { ISubmitFindJob } from '../../util/mutateInterface';
+import Loader from '../util-component/Loader';
 
 
 
 
 export default function FindJobForm() {
-    const {register,handleSubmit,formState:{errors},setValue} = useForm<IFindJob>(
+    const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<IFindJob>(
         {resolver:yupResolver(findJobSchema)})
 
     const [date, setDate] = useState<Date | undefined>()
     const [file,setFile] =  useState<File | null>(null)
-    const ref = useRef<HTMLInputElement>(null)
-    // const toast = useToast()
+    const {isPending,mutateAsync} = useCloudUpload()
+    const {isPending:pending,mutate} = usePostRequest<IResHireForm,ISubmitFindJob>({url:"/user/findjob",showError:true,showSuccess:"Job Form succesfully submitted",
+        onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
+    })
+    const ref = useRef<HTMLInputElement>(null)  
+
     const onSubmit:SubmitHandler<IFindJob>= async (data)=>{
         if(!file){return}
-        const publicUrl = await cloudinaryUploader({file})
-        console.log(publicUrl)
-        console.log(data)
+        const uploadId = await mutateAsync({file})
+        console.log(uploadId)
+        if(uploadId.data){
+            const imgurl = `${imgUrl}${uploadId.data.public_id}.png`
+            console.log(imgurl)
+            mutate({
+               email:data.email,firstname:data.firstName,lastname:data.lastName,phone:data.mobileNumber,
+               scheduledate:data.interviewDate.toISOString(),educationalaccount:data.experienceAccount, 
+               educationalqualification:data.qualification,bpoexperience:data.experience.toString(),location:data.location,site:data.site,file:imgurl,type:"form upload"
+            })
+        }
     }
 
  
@@ -43,7 +60,6 @@ export default function FindJobForm() {
                 className:"h-fit border-border"
             })
         }
-        console.log(file.size)
 
         const allowedExtensions = /(\.pdf|\.docx*?)$/i
         if (!allowedExtensions.exec(file.name)){
@@ -55,12 +71,6 @@ export default function FindJobForm() {
         }
         setValue("resume",file.name)
         setFile(file)
-        // const reader = new FileReader();
-        // reader.readAsDataURL(file)
-        // reader.onloadend=(data)=>{
-        //     console.log(data,"Reader args")
-  
-        // }
     }
     return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex-center flex-wrap'>
@@ -107,7 +117,7 @@ export default function FindJobForm() {
                 error={errors.qualification?.message}
                 selectTitle='Select education qualification'
                 setValue={setValue}
-                className='mb-6 w-6/12'
+                className='mb-6 w-7/12 sm:w-6/12'
                 title='Educational Qualification'
                 items={qualifications}  
                 others
@@ -128,7 +138,7 @@ export default function FindJobForm() {
             error={errors.experienceAccount?.message}
             selectTitle='Select your experience account'
             setValue={setValue}
-            className='mb-6 w-6/12 sm:pl-2'
+            className='mb-6 w-7/12 sm:w-6/12 sm:pl-2'
             title='Experience account '
             items={qualifications}  
             others
@@ -139,8 +149,22 @@ export default function FindJobForm() {
             error={errors.location?.message}
             selectTitle='Select your location'
             setValue={setValue}
-            className='mb-6 w-6/12 sm:pl-2'
+            className='mb-6 w-7/12 sm:w-6/12 sm:pl-2'
             title='Location '
+            items={[{value:"lagos",label:'lagos'},
+                    {value:"abuja",label:'Abuja'},
+                    {value:"portHarcout",label:'portHarcout'},
+            ]}  
+            others
+        />
+        <FormSelect
+            name='site'
+            placeholder='Select nearest site'
+            error={errors.site?.message}
+            selectTitle='Select Site'
+            setValue={setValue}
+            className='mb-6 w-7/12 sm:w-6/12 sm:pl-2'
+            title='Site '
             items={[{value:"lagos",label:'lagos'},
                     {value:"abuja",label:'Abuja'},
                     {value:"portHarcout",label:'portHarcout'},
@@ -198,7 +222,8 @@ export default function FindJobForm() {
             {errors.resume && <span className="text-red-500 absolute -bottom-5 left-2 ">{errors.resume.message}</span>}
         </div>
 
-        <Button variant={"deep"} className='block hover:brightness-110 w-full my-6'>Submit</Button>
+        <Button disabled={(pending || isPending)} variant={"deep"} className='block hover:brightness-110 w-full my-6'>
+            {!(pending || isPending)?<span>Submit</span>:<Loader/>}</Button>
         <h3 className="flex-center pr-2 justify-end w-full mt-2 flex-center">
             <span>Do you need a job?</span>
             <span className="underline cursor-pointer hover:font-bold font-semibold decoration-deepGreen ml-2">Click here</span>

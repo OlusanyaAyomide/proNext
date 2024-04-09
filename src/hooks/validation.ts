@@ -46,6 +46,7 @@ export interface IFindJob{
     location:string
     interviewDate:Date
     resume:string
+    site:string
 }
 
 export interface IContactForm{
@@ -110,7 +111,8 @@ export const findJobSchema: yup.ObjectSchema<IFindJob> = yup.object({
     experienceAccount: yup.string().required(),
     location: yup.string().required(),
     interviewDate: yup.date().required(),
-    resume:yup.string().required()
+    resume:yup.string().required(),
+    site:yup.string().required()
 });
 
 export const contactFormSchema: yup.ObjectSchema<IContactForm> = yup.object({

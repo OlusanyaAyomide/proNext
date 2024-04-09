@@ -8,9 +8,9 @@ export default function Services() {
   return (
     <div id='services' className='bg-white landing-pad py-6'>
         <h1 className="text-center  text-pro-blue font-bold text-lg">Services</h1>
-        <div className="mt-5 flex-center flex-wrap max-w-[1200px] mx-auto">
+        <div className="mt-5 flex flex-wrap max-w-[1200px] mx-auto">
             {_mockServices.map((item,key)=>(
-                <TriggerView side='up' key={key} className='w-full mb-5 sm:w-6/12 lg:w-4/12 sm:px-2'>
+                <TriggerView side='up' key={key} className='w-full hover:shadow-lg rounded-md transition-shadow duration-300 mb-5 sm:w-6/12 lg:w-4/12 sm:px-2'>
                     <div className="mb-4  mx-auto max-w-[420px]">
                         <div className="aspect-[3/2] rounded-md overflow-hidden">
                             <img src={item.image} className='h-full w-full object-contain'/>

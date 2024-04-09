@@ -93,7 +93,7 @@
       @apply px-2 sm:px-3 lg:px-4;
      }
      .flex-center{
-      @apply flex items-center
+      @apply flex items-center 
      }
      .landing-pad{
       @apply px-2 sm:px-4 md:px-8 lg:px-10

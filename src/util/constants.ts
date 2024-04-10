@@ -138,6 +138,8 @@ export const _sideLinks=[
     },
 ]
 
+export const _footerLogos=[Svgs.FtFacebook,Svgs.FtLinkldn,Svgs.FtX,Svgs.FtInstagram,Svgs.FtYouTube]
+
 export const _dashboardStats =[
     {
         title:"Total Form",
@@ -474,3 +476,62 @@ export const _enquiryCategories = [
 
 
 export const _contactinfo = `Once you click "Hire a Talent," you'll fill out a form with your company details, including name, industry, location, and contact information. You can also specify any requirements or preferences you have for the talent you're seeking. Additionally, you'll have the option to schedule a call with one of our representatives.`
+
+
+export const _NcrsiteItems=[
+    {value:"Quezon City",label:"Quezon City"},
+    {value:"Fairview",label:"Fairview"},
+    {value:"Fairview Terrace",label:"Fairview Terrace"},
+    {value:"Rockwell Pasig",label:"Rockwell Pasig"},
+    {value:"Ojv Pasig",label:"Ojv Pasig"},
+    {value:"Silver city",label:"Silver city"},
+    {value:"Eton Ortigas",label:"Eton Ortigas"},
+    {value:"Mandaluyong",label:"Mandaluyong"},
+    {value:"Vertis North",label:"Vertis North"},
+    {value:"Edsa",label:"Edsa"},
+    {value:"Alabang",label:"Alabang"},
+    {value:"Moa Pasay",label:"Moa Pasay"},
+    {value:"Alphaland",label:"Alphaland"},
+    {value:"Ayala Makati",label:"Ayala Makati"},
+    {value:"Molino",label:"Molino"},
+    {value:"Aura Taguig",label:"Aura Taguig"},
+    {value:"Mckinley",label:"Mckinley"},
+    {value:"Sucat",label:"Sucat"},
+]
+
+export const _ProvinceSite=[
+    {value:"Cebu It Park",label:"Cebu It Park"},
+    {value:"Cebu Insular ",label:"Cebu Insular "},
+    {value:"Bacolod",label:"Bacolod"},
+    {value:"Cagayan De oro",label:"Cagayan De oro"},
+    {value:"Iloilo",label:"Iloilo"},
+    {value:"Davao",label:"Davao"},
+    {value:"Tarlac",label:"Tarlac"}
+]
+
+
+// export const _locationsList=[
+//     "Metro Manila (NCR)",
+//     "Shs Graduate",
+//     "N/A (Select N/A if location is not on the list)"
+
+// ]
+
+
+export const _locationList =[
+    {
+        title:"Metro Manila (NCR)",
+        header:"Select Preferred Site from NCR",
+        content:_NcrsiteItems   
+    },
+    {
+        title:"Shs Graduate",
+        header:"Select Preferred Site from Province",
+        content:_ProvinceSite   
+    },
+    {
+        title:"N/A (Select N/A if location is not on the list)",
+        header:"Enter Preferred Site from N/A",
+        content:[] 
+    },
+]

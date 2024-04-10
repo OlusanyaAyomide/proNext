@@ -18,6 +18,7 @@ import { usePostRequest } from '../../hooks/usePostRequests';
 import { IResHireForm } from '../../util/resInterfaces';
 import { ISubmitFindJob } from '../../util/mutateInterface';
 import Loader from '../util-component/Loader';
+import JobLocation from './JobLocation';
 
 
 
@@ -35,6 +36,7 @@ export default function FindJobForm() {
     const ref = useRef<HTMLInputElement>(null)  
 
     const onSubmit:SubmitHandler<IFindJob>= async (data)=>{
+        // console.log(data)
         if(!file){return}
         const uploadId = await mutateAsync({file})
         console.log(uploadId)
@@ -144,7 +146,15 @@ export default function FindJobForm() {
             others
         />
 
-        <FormSelect
+        <JobLocation
+            name='location'
+            error={errors.location?.message}
+            setValue={setValue}
+            className='mb-4 w-7/12 sm:w-6/12'
+            title='Location '
+        />
+
+        {/* <FormSelect
             name='location'
             error={errors.location?.message}
             selectTitle='Select your location'
@@ -156,18 +166,21 @@ export default function FindJobForm() {
                     {value:"portHarcout",label:'portHarcout'},
             ]}  
             others
-        />
+        /> */}
         <FormSelect
             name='site'
-            placeholder='Select nearest site'
+            placeholder='Select Preffered Site From Province'
             error={errors.site?.message}
-            selectTitle='Select Site'
+            selectTitle='Select '
             setValue={setValue}
             className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
             title='Site '
-            items={[{value:"lagos",label:'lagos'},
-                    {value:"abuja",label:'Abuja'},
-                    {value:"portHarcout",label:'portHarcout'},
+            items={[{value:"Health Care",label:'Health Care'},
+                    {value:"Insurance",label:'Insurance'},
+                    {value:"Travel",label:'Travel'},
+                    {value:"Social Media",label:'Social Media'},
+                    {value:"Telco",label:'Telco'},
+                    {value:"Ecommerce",label:'Ecommerce'},
             ]}  
             others
         />

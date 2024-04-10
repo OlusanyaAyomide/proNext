@@ -6,11 +6,12 @@ import ContactInfo from './ContactInfo'
 import ContactForm from '../landing/ContactForm'
 import { Button } from '../ui/button'
 import { Svgs } from '../../util/svgs'
-export default function ContactDialog() {
+import { cn } from '../lib/utils'
+export default function ContactDialog({className}:{className?:string}) {
   return (
     <Dialog>
         <DialogTrigger asChild>
-            <Button  variant={"outline"} className='flex-center rounded-3xl  max-md:mb-6 px-6 border-[1.5px]'>
+            <Button  variant={"outline"} className={cn('flex-center rounded-3xl  max-md:mb-6 px-6 border-[1.5px]',className)}>
                 <Svgs.CallSvg className='mr-3'/>
                 <span className='font-medium'>Contact Us</span>
             </Button>

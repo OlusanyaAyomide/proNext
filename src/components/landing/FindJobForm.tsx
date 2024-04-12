@@ -39,10 +39,8 @@ export default function FindJobForm() {
         // console.log(data)
         if(!file){return}
         const uploadId = await mutateAsync({file})
-        console.log(uploadId)
         if(uploadId.data){
             const imgurl = `${imgUrl}${uploadId.data.public_id}.png`
-            console.log(imgurl)
             mutate({
                email:data.email,firstname:data.firstName,lastname:data.lastName,phone:data.mobileNumber,
                scheduledate:data.interviewDate.toISOString(),educationalaccount:data.experienceAccount, 

@@ -3,19 +3,22 @@ import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm ,SubmitHandler} from 'react-hook-form';
 import { INewService, newServiceSchema } from '../../hooks/validation';
 import UserInput from '../users/add/UserInput';
-import { Select, SelectGroup, SelectTrigger,SelectContent, SelectValue, SelectItem } from '../ui/select';
 import { Textarea } from '../ui/textarea';
 import { Avatar,AvatarFallback, AvatarImage } from '../ui/avatar';
 import { Button } from '../ui/button';
 import { Svgs } from '../../util/svgs';
-import { Form } from 'react-router-dom';
 import FormSelect from '../util-component/FormSelect';
-
+import { useCloudUpload } from '../util-component/cloudinaryUploader';
+import { imgUrl } from '../util-component/keys';
+import { usePostRequest } from '../../hooks/usePostRequests';
+import { ISubmitNewService } from '../../util/mutateInterface';
+import Loader from '../util-component/Loader';
 export default function AddService() {
 
     const [file,setFile] = useState<File | null>(null)
     const [url,setUrl] = useState("")
     const ref = useRef<HTMLInputElement>(null)
+    const {isPending,mutateAsync} = useCloudUpload()
 
     const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const file = e.target.files && e.target.files[0];
@@ -31,11 +34,25 @@ export default function AddService() {
         }
     } 
 
+    const {isPending:pending,mutate} = usePostRequest<void,ISubmitNewService>({url:"/admin/create/service",showSuccess:"New Sercie has been added",onSuccess:()=>reset()})
+
     const onSubmit:SubmitHandler<INewService>= async (data)=>{
-        console.log(data)
+        if(!file){return}
+        const uploadId = await mutateAsync({file})
+        if(uploadId){
+            const imgurl = `${imgUrl}${uploadId.data.public_id}.png` 
+            mutate({
+                photo:imgurl,
+                description:data.description,
+                title:data.title,
+                tag:data.tag,
+                city:data.city,
+                category:data.category
+            }) 
+        }
     }
 
-    const {register,handleSubmit,formState:{errors},setValue} = useForm<INewService>(
+    const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<INewService>(
         {resolver:yupResolver(newServiceSchema)}
         )
     
@@ -89,10 +106,19 @@ export default function AddService() {
                     placeholder='Enter Your Service City'
                     register={register}
                     error={errors.city?.message}
-                    className=''
+                    className='w-full sm:w-6/12 sm:pl-2'
                     title='City'
                 />
-
+                <div className="w-full">
+                    <UserInput
+                        name='tag'
+                        placeholder='Enter your # tag of the services'
+                        register={register}
+                        error={errors.tag?.message}
+                        className='w-full mb-6 sm:w-6/12 sm:pr-2'
+                        title='Tag'
+                    />
+                </div>
                 <div className="w-full sm:w-6/12 relative h-[200px]">
                     <Textarea {...register("description")} className='resize-none bg-offwhite rounded-md ring-0 focus-visible:ring-0 h-full'>
                     </Textarea>
@@ -100,7 +126,9 @@ export default function AddService() {
                 </div>
 
                 <div className="w-full sm:w-6/12 sm:pl-2 sm:flex sm:items-end sm:h-[200px] max-sm:mt-5">
-                    <Button className='mt-5 block mx-auto px-10'>Add Service</Button>
+                    <Button disabled={pending || isPending} className='mt-5 block mx-auto px-10'>
+                        {(pending || isPending)?<Loader/>:<span>Add Service</span>}
+                    </Button>
                 </div>
             </form>
             </div>

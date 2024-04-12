@@ -30,3 +30,8 @@ export interface IResHireForm {
     };
   }
   
+export interface IToken{
+    admin:string
+    exp:string
+    iat:string
+}

@@ -3,13 +3,10 @@ import { Button } from '../ui/button'
 import { Link } from 'react-router-dom'
 import { _mockUsers } from '../../util/constants'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { useQuery } from '@tanstack/react-query'
-import axios from 'axios'
+import { useGetRequest } from '../../hooks/useGetRequests'
 
 export default function UserMain() {
-    const {data,isLoading,isError} = useQuery({queryKey:["test","posr"],queryFn:()=>{
-        return axios.post("http://localhost:5000/util/testpost",{})
-    },staleTime:600000,refetchOnWindowFocus:false})
+    const {data,isLoading,isError} = useGetRequest({queryKey:["test","post"],url:'/util/testpost'})
     console.log(data)
   return (
     <div className='pt-10'>

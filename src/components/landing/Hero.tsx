@@ -9,7 +9,7 @@ import FindJobForm from './FindJobForm'
 
 export default function Hero() {
   return (
-    <div id='home' className='min-h-[90vh]  overflow-hidden relative landing-pad py-6'>
+    <div id='home' className='overflow-hidden md:pb-16 relative landing-pad py-6'>
         <div className="absolute z-10 bottom-14 bg-[#e7f6e9] h-full w-[60%] sm:w-[55%] rounded-l-[260px] left-[40%] sm:left-[45%]"></div>
             <div className="relative z-20 pt-16 flex-center flex-wrap">
                 <div className="w-full md:pl-8 lg:pl-16 h-full flex-col justify-center md:w-6/12">

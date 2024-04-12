@@ -21,3 +21,26 @@ export interface ISubmitFindJob{
     file:string,
     type:string
 }
+
+
+export interface ICreateNewUser
+{
+    lastname:string,
+    firstname:string,
+    email:string,
+    password:string,
+    address:string,
+    photo:string,
+    dob:string,
+    phone:string
+}
+
+export interface ISubmitNewService{
+    description:string,
+    photo:string,
+    title:string,
+    tag:string,
+    city:string,
+    category:string
+    
+}

@@ -50,7 +50,7 @@ export default function FormSelect({setValue,className,error,items,selectTitle,n
         }
     }}
         >
-        <SelectTrigger ref={closeref} className='w-full bg-offwhite border-0 flex justify-between '>
+        <SelectTrigger ref={closeref} className='w-full bg-offwhite border-border h-11 py-2 flex justify-between '>
             <SelectValue placeholder={placeholder || "Select option"}>{formatText(otherValue)}</SelectValue>
         </SelectTrigger>
         <SelectContent className='max-h-[300px] w-[350px] overflow-auto default-scroll'>

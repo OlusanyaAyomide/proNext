@@ -11,6 +11,11 @@ import { Textarea } from '../../ui/textarea';
 import { Avatar,AvatarFallback, AvatarImage } from '../../ui/avatar';
 import FormSelect from '../../util-component/FormSelect';
 import { formatDate } from '../../lib/utils';
+import { useCloudUpload } from '../../util-component/cloudinaryUploader';
+import { usePostRequest } from '../../../hooks/usePostRequests';
+import { ICreateNewUser } from '../../../util/mutateInterface';
+import { imgUrl } from '../../util-component/keys';
+import Loader from '../../util-component/Loader';
 
 
 export default function UserAdd() {
@@ -18,10 +23,15 @@ export default function UserAdd() {
     const [url,setUrl] = useState("")
     const [date, setDate] = useState<Date | undefined>(new Date())
     const ref = useRef<HTMLInputElement>(null)
+    const {isPending,mutateAsync} = useCloudUpload()
 
-  const {register,handleSubmit,formState:{errors},setValue} = useForm<INewUserSchema>(
+    const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<INewUserSchema>(
     {resolver:yupResolver(newUserSchema)}
     )
+    const {isPending:pending,mutate} = usePostRequest<void,ICreateNewUser>({url:"/user/findjob",showError:true,showSuccess:"New User has been added",
+    onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
+})
+
 
     const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const file = e.target.files && e.target.files[0];
@@ -39,7 +49,14 @@ export default function UserAdd() {
 
 
     const onSubmit:SubmitHandler<INewUserSchema>= async (data)=>{
-        console.log(data)
+        if(!file){return}
+        const uploadId = await mutateAsync({file})
+        if(uploadId.data){
+            const imgurl = `${imgUrl}${uploadId.data.public_id}.png`  
+            mutate({lastname:data.lastName,firstname:data.firstName,dob:data.dateOfBirth.toISOString(),
+                email:data.email,phone:data.phoneNumber,photo:imgurl,password:"demo",address:data.address
+            })
+        }
     }
 
   return (
@@ -136,7 +153,9 @@ export default function UserAdd() {
                 {errors.address && <span className="text-red-500 absolute -bottom-4 left-2 text-[13px]">{errors.address.message}</span>}
             </div>
             <div className="w-full sm:w-6/12 sm:pl-4 sm:flex sm:items-end sm:h-[200px] max-sm:mt-5">
-                    <Button className='mt-5 block mx-auto px-10'>Add User</Button>
+                    <Button disabled={(isPending || pending)} className='mt-5 block mx-auto px-10'>
+                    {!(pending || isPending)?<span>Add user</span>:<Loader/>}
+                    </Button>
                 </div>
         </form>
         </div>

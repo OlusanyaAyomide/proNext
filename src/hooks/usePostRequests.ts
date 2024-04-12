@@ -3,6 +3,9 @@ import request from "./requests";
 import { AxiosError, AxiosResponse } from "axios";
 import { toast } from "../components/ui/use-toast";
 import { usePostErrors } from "./usePostErrors";
+import { useCookies } from "react-cookie";
+import {jwtDecode} from "jwt-decode"
+import { IToken } from "../util/resInterfaces";
 
 
 interface IPostRequest{
@@ -15,8 +18,11 @@ interface IPostRequest{
 
 export const usePostRequest = <T,G>({url,onSuccess,onError,showSuccess,showError=true}:IPostRequest)=>{
     const trigger = usePostErrors()
+    const [{authCookie},] = useCookies(['authCookie'])
+    const adminId = (authCookie?jwtDecode(authCookie as string):null ) as IToken | null
+
     return useMutation<AxiosResponse<T>,Error,G>({mutationFn:(body)=>{
-        return request.post(url,body,{timeout:10000}) 
+        return request.post(url,{adminid:adminId?.admin || undefined,...body},{timeout:10000}) 
     },onSuccess:(data)=>{
         if(showSuccess){
             toast({

@@ -5,9 +5,7 @@ import { redirect, useNavigate } from 'react-router-dom';
 
 export default function QueryProvider({children}:{children:React.ReactNode}) {
     const navigate = useNavigate()
-    // useEffect(()=>{
-    //     navigate("/admin/dashboard")
-    // },[])
+    // const 
     
     const [queryClient,_] = useState(new QueryClient({
       queryCache:new QueryCache({

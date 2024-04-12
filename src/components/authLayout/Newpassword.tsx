@@ -38,7 +38,7 @@ export default function NewPassword() {
                     type='password'
                     error={errors.password?.message}
                     className=''
-                    title='Enter Email Address'
+                    title='Enter Password'
                 />
                 <Button disabled={isPending} className='mt-10 rounded-md block mx-auto w-full px-10'>
                     {isPending?<Loader/>:<span>Reset Password</span>}

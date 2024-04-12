@@ -98,6 +98,14 @@ module.exports = {
            "background-position":"0px -100px" 
           }
         },
+        spinReverse:{
+          "0%":{
+            transform:"rotate(0deg)"
+          },
+          "100%":{
+            transform: "rotate(-360deg)"
+          }
+        },
         fadeUp:{
           "0%":{
             transform:"translateY(160px)",
@@ -136,7 +144,8 @@ module.exports = {
         fadeup:"fadeUp 1.2s linear 1",
         faderight:"fadeRight 1s linear 1",
         fadeleft:"fadeLeft 1s linear 1",
-        star:"rotate-star 5s linear 10"
+        star:"rotate-star 5s linear 10",
+        spinreverse:"spinReverse 2s linear infinite"
       },
       screens:{
         xs:"340px",

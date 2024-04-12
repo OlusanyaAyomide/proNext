@@ -20,7 +20,7 @@ export default function Layout({children}:{children:React.ReactNode}) {
     return (
         <>
             {authCookie?
-                <div className='relative bg-[#F7F7F9] max-w-[1600px] mx-auto'>
+                <div className='relative bg-[#F7F7F9] min-h-screen max-w-[1600px] mx-auto'>
                     <Header/>
                     <div className="flex">
                         <div className="w-[250px] shrink-0 max-lg:hidden ">

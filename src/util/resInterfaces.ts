@@ -35,3 +35,18 @@ export interface IToken{
     exp:string
     iat:string
 }
+
+export interface IUser {
+    _id: string;
+    email: string;
+    password: string;
+    firstname: string;
+    lastname: string;
+    photo: string;
+    address: string;
+    phone: string;
+    dob: string;
+    createdAt: string;
+    __v: number;
+}
+  

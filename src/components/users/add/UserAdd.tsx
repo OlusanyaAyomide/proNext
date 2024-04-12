@@ -16,6 +16,7 @@ import { usePostRequest } from '../../../hooks/usePostRequests';
 import { ICreateNewUser } from '../../../util/mutateInterface';
 import { imgUrl } from '../../util-component/keys';
 import Loader from '../../util-component/Loader';
+import { useQueryClient, useQueryErrorResetBoundary } from '@tanstack/react-query';
 
 
 export default function UserAdd() {
@@ -24,12 +25,16 @@ export default function UserAdd() {
     const [date, setDate] = useState<Date | undefined>(undefined)
     const ref = useRef<HTMLInputElement>(null)
     const {isPending,mutateAsync} = useCloudUpload()
+    const queryClient = useQueryClient()
 
     const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<INewUserSchema>(
     {resolver:yupResolver(newUserSchema)}
     )
     const {isPending:pending,mutate} = usePostRequest<void,ICreateNewUser>({url:"/admin/signup",showError:true,showSuccess:"New User has been added",addId:false,
-    onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
+    onSuccess:()=>{
+        setFile(null),reset(),setDate(undefined),setFile(null)
+        queryClient.invalidateQueries({queryKey:["all-users"]})
+    }
 })
 
 
@@ -156,7 +161,7 @@ export default function UserAdd() {
                     <Button disabled={(isPending || pending)} className='mt-5 block mx-auto px-10'>
                     {!(pending || isPending)?<span>Add user</span>:<Loader/>}
                     </Button>
-                </div>
+            </div>
         </form>
         </div>
 

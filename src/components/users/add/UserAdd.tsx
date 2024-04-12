@@ -21,19 +21,19 @@ import Loader from '../../util-component/Loader';
 export default function UserAdd() {
     const [file,setFile] = useState<File | null>(null)
     const [url,setUrl] = useState("")
-    const [date, setDate] = useState<Date | undefined>(new Date())
+    const [date, setDate] = useState<Date | undefined>(undefined)
     const ref = useRef<HTMLInputElement>(null)
     const {isPending,mutateAsync} = useCloudUpload()
 
     const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<INewUserSchema>(
     {resolver:yupResolver(newUserSchema)}
     )
-    const {isPending:pending,mutate} = usePostRequest<void,ICreateNewUser>({url:"/user/findjob",showError:true,showSuccess:"New User has been added",
+    const {isPending:pending,mutate} = usePostRequest<void,ICreateNewUser>({url:"/admin/signup",showError:true,showSuccess:"New User has been added",addId:false,
     onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
 })
 
 
-    const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{
+    const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{ 
         const file = e.target.files && e.target.files[0];
         if(!file){return}
 
@@ -54,7 +54,7 @@ export default function UserAdd() {
         if(uploadId.data){
             const imgurl = `${imgUrl}${uploadId.data.public_id}.png`  
             mutate({lastname:data.lastName,firstname:data.firstName,dob:data.dateOfBirth.toISOString(),
-                email:data.email,phone:data.phoneNumber,photo:imgurl,password:"demo",address:data.address
+                email:data.email,phone:data.phoneNumber,photo:imgurl,password:`${data.firstName}1234`,address:data.address
             })
         }
     }

@@ -9,7 +9,7 @@ import { Svgs } from '../../util/svgs';
 import { Calendar } from '../ui/calendar';
 import { Button } from '../ui/button';
 import { formatDate } from '../lib/utils';
-import { qualifications } from '../../util/constants';
+import { _NcrsiteItems, _ProvinceSite, qualifications } from '../../util/constants';
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { toast } from '../ui/use-toast';
 import { cloudinaryUploader, useCloudUpload } from '../util-component/cloudinaryUploader';
@@ -24,17 +24,18 @@ import JobLocation from './JobLocation';
 
 
 export default function FindJobForm() {
-    const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<IFindJob>(
+    const {register,handleSubmit,formState:{errors},setValue,reset,watch} = useForm<IFindJob>(
         {resolver:yupResolver(findJobSchema)})
 
     const [date, setDate] = useState<Date | undefined>()
     const [file,setFile] =  useState<File | null>(null)
     const {isPending,mutateAsync} = useCloudUpload()
-    const {isPending:pending,mutate} = usePostRequest<IResHireForm,ISubmitFindJob>({url:"/user/findjob",showError:true,showSuccess:"Job Form succesfully submitted",
+    const {isPending:pending,mutate} = usePostRequest<IResHireForm,ISubmitFindJob>({url:"/user/findjob",showError:true,addId:false,showSuccess:"Job Form succesfully submitted",
         onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
     })
     const ref = useRef<HTMLInputElement>(null)  
 
+    const location = watch("location")
     const onSubmit:SubmitHandler<IFindJob>= async (data)=>{
         // console.log(data)
         if(!file){return}
@@ -144,44 +145,41 @@ export default function FindJobForm() {
             others
         />
 
-        <JobLocation
+        <FormSelect
             name='location'
-            error={errors.location?.message}
-            setValue={setValue}
-            className='mb-4 w-7/12 sm:w-6/12'
-            title='Location '
-        />
-
-        {/* <FormSelect
-            name='location'
+            placeholder='select location'
             error={errors.location?.message}
             selectTitle='Select your location'
             setValue={setValue}
-            className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
+            className='mb-4 w-7/12 sm:w-6/12 sm:pr-2'
             title='Location '
-            items={[{value:"lagos",label:'lagos'},
-                    {value:"abuja",label:'Abuja'},
-                    {value:"portHarcout",label:'portHarcout'},
+            items={[{value:"NCR",label:'Metro Manila (NCR)'},
+                    {value:"Province",label:'Province'},
+                    {value:"NA",label:'N/A (Select N/A if location is not on the list)'},
             ]}  
-            others
-        /> */}
+        />
+
         <FormSelect
             name='site'
-            placeholder='Select Preffered Site From Province'
+            placeholder='select Site'
             error={errors.site?.message}
-            selectTitle='Select '
+            selectTitle={location !== "NA"?`Select preferred location from ${location}`:"'N/A (Select N/A if location is not on the list)"}
             setValue={setValue}
             className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
             title='Site '
-            items={[{value:"Health Care",label:'Health Care'},
-                    {value:"Insurance",label:'Insurance'},
-                    {value:"Travel",label:'Travel'},
-                    {value:"Social Media",label:'Social Media'},
-                    {value:"Telco",label:'Telco'},
-                    {value:"Ecommerce",label:'Ecommerce'},
-            ]}  
+            items={location==="NCR"?_NcrsiteItems:location==="Province"?_ProvinceSite:[]}  
             others
+            disabled={!location}
         />
+        {/* <JobLocation
+            name='site'
+            error={errors.site?.message}
+            setValue={setValue}
+            className='mb-4 w-7/12 sm:w-6/12'
+            title='Site'
+            disabled={!!location}
+            selectTitle={location}
+        /> */}
 
         <div className='w-full mb-6 relative'>
             <h3 className='ml-[2px] font-medium  text-gray-800 text-support mb-[2px] md:text-[15px]'>When are you available to walk-in for an interview</h3>

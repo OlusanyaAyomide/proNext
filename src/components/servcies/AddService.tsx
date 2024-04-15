@@ -13,17 +13,17 @@ import { imgUrl } from '../util-component/keys';
 import { usePostRequest } from '../../hooks/usePostRequests';
 import { ISubmitNewService } from '../../util/mutateInterface';
 import Loader from '../util-component/Loader';
+import { useQueryClient } from '@tanstack/react-query';
 export default function AddService() {
 
     const [file,setFile] = useState<File | null>(null)
     const [url,setUrl] = useState("")
     const ref = useRef<HTMLInputElement>(null)
     const {isPending,mutateAsync} = useCloudUpload()
-
+    const queryClient = useQueryClient()
     const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const file = e.target.files && e.target.files[0];
         if(!file){return}
-
         const reader = new FileReader();
         reader.readAsDataURL(file)
         reader.onloadend=()=>{
@@ -34,7 +34,13 @@ export default function AddService() {
         }
     } 
 
-    const {isPending:pending,mutate} = usePostRequest<void,ISubmitNewService>({url:"/admin/create/service",showSuccess:"New Sercie has been added",onSuccess:()=>reset()})
+    const {isPending:pending,mutate} = usePostRequest<void,ISubmitNewService>({url:"/admin/create/service",showSuccess:"New Sercie has been added",
+    onSuccess:()=>{reset()
+        setFile(null)
+        queryClient.invalidateQueries({queryKey:['service-list'],refetchType:"all"})
+    }
+    
+    })
 
     const onSubmit:SubmitHandler<INewService>= async (data)=>{
         if(!file){return}
@@ -54,7 +60,7 @@ export default function AddService() {
 
     const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<INewService>(
         {resolver:yupResolver(newServiceSchema)}
-        )
+    )
     
     
     return (
@@ -94,9 +100,9 @@ export default function AddService() {
                     name='category'
                     setValue={setValue}
                     items={[{value:"health",label:"Health Care"},
-                            {value:"logistic",label:"Logistics"},
+                            {value:"LeaderShip",label:"Leadership"},
                             {value:"insurance",label:"Insurance"},
-                            {value:"wfh",label:"WFH"},]}    
+                            {value:"Utility",label:"Utility"},]}    
                     error={errors.category?.message}   
                     title='Select Category'   
                 />

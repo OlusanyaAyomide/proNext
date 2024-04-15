@@ -22,7 +22,7 @@ export default function HireTalentForm() {
         {resolver:yupResolver(howItWorksFormSchema)})
 
     const [date, setDate] = useState<Date | null>(null)
-    const {isPending,mutate} = usePostRequest<IResHireForm,ISubmitHireTalent>({url:"/user/hiretalent",showSuccess:"Form succesfully submited",onSuccess:()=>{
+    const {isPending,mutate} = usePostRequest<IResHireForm,ISubmitHireTalent>({url:"/user/hiretalent",addId:false,showSuccess:"Form succesfully submited",onSuccess:()=>{
         reset()
         setDate(null)
     }})

@@ -15,14 +15,16 @@ interface IPostRequest{
     showSuccess?:string
     showError?:boolean,
     addId?:boolean
+
 }
 
-export const usePostRequest = <T,G>({url,onSuccess,onError,showSuccess,showError=true,addId=true}:IPostRequest)=>{
+export const usePostRequest = <T,G>({url,onSuccess,onError,showSuccess,showError=true,addId=true,}:IPostRequest)=>{
     const trigger = usePostErrors()
     const [{authCookie},] = useCookies(['authCookie'])
     const adminId = (authCookie?jwtDecode(authCookie as string):null ) as IToken | null
 
     return useMutation<AxiosResponse<T>,Error,G>({mutationFn:(body)=>{
+        // const staffBody = staffId?{staffid:adminId,...body}:null
         const bodyObject = addId?{adminid:adminId?.admin || undefined,...body}:body
         return request.post(url,bodyObject,{timeout:10000}) 
     },onSuccess:(data)=>{

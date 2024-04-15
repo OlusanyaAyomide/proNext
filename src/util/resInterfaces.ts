@@ -50,3 +50,29 @@ export interface IUser {
     __v: number;
 }
   
+
+export interface IServiceList {
+    _id: string;
+    title: string;
+    category: string;
+    city: string;
+    tag: string;
+    photo: string;
+    description: string;
+    createdAt: string;
+    __v: number;
+}
+
+
+export interface IHireFromRes{
+    _id: string
+    name:string
+    email:string,
+    phone: string,
+    scheduledate:string,
+    proposaltype:string,
+    additionalmessage:string,
+    status: "" | "",
+    createdAt:string,
+    __v: 0
+}

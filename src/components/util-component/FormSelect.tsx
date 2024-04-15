@@ -18,9 +18,10 @@ interface IFormSelect{
     title:string
     others?:boolean 
     placeholder?:string
+    disabled?:boolean
 }
 
-export default function FormSelect({setValue,className,error,items,selectTitle,name,title,others,placeholder}:IFormSelect) {
+export default function FormSelect({setValue,className,error,items,selectTitle,name,title,others,placeholder,disabled}:IFormSelect) {
 
     const [IsdroppedDown,setIsDropDown] = useState(false)
     const [otherValue,setOtherValue] =  useState("")
@@ -50,7 +51,7 @@ export default function FormSelect({setValue,className,error,items,selectTitle,n
         }
     }}
         >
-        <SelectTrigger ref={closeref} className='w-full bg-offwhite border-border h-11 py-2 flex justify-between '>
+        <SelectTrigger disabled={disabled} ref={closeref} className='w-full bg-offwhite border-border h-11 py-2 flex justify-between '>
             <SelectValue placeholder={placeholder || "Select option"}>{formatText(otherValue)}</SelectValue>
         </SelectTrigger>
         <SelectContent className='max-h-[300px] w-[350px] overflow-auto default-scroll'>

@@ -449,6 +449,15 @@ export const slideImages2=[
     },
 ]
 
+export const _exprienceList =[
+    {value:"Healthcare",label:"Healthcare"},
+    {value:"Insurance",label:"Insurance"},
+    {value:"Travel",label:"Travel"},
+    {value:"Social media",label:"Social media"},
+    {value:"Telco",label:"Telco"},
+    {value:"Ecommerce",label:"E-commerce"},
+    {value:"NoAccount",label:"N/A (No Account)"}
+]
 
 export const qualifications=[
     {value:"hs_graduate",label:"HS Graduate (old curriculum)"},

@@ -9,7 +9,7 @@ import { Svgs } from '../../util/svgs';
 import { Calendar } from '../ui/calendar';
 import { Button } from '../ui/button';
 import { formatDate } from '../lib/utils';
-import { _NcrsiteItems, _ProvinceSite, qualifications } from '../../util/constants';
+import { _NcrsiteItems, _ProvinceSite, _exprienceList, qualifications } from '../../util/constants';
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { toast } from '../ui/use-toast';
 import { cloudinaryUploader, useCloudUpload } from '../util-component/cloudinaryUploader';
@@ -141,7 +141,7 @@ export default function FindJobForm() {
             setValue={setValue}
             className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
             title='Experience account '
-            items={qualifications}  
+            items={_exprienceList}  
             others
         />
 

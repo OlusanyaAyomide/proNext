@@ -29,11 +29,19 @@ export default function Footer() {
                 <Logo className='-ml-4 scale-110'/>
                 <ContactDialog className='bg-transparent  border-white max-sm:scale-[80%]'/>
             </div>
+            <div className="my-3 ml-auto flex flex-wrap max-w-[250px]">
+                <span className='block mb-2 w-5/12 pr-2'>Email Addrss</span>
+                <span className='block mb-2 w-7/12 pr-2 text-right'>pronext@gmail.com</span>
+                <span className='block mb-2 w-5/12 pr-2'>Address</span>
+                <span className='block mb-2 w-7/12 pr-2 text-right'>myadress at philipines</span>
+                <span className='block mb-2 w-5/12 pr-2'>Phone No</span>
+                <span className='block mb-2 w-7/12 pr-2 text-right'>0834567792</span>
+            </div> 
            
         </div>
         <div className="z-20 relative bg-white h-[1px] w-full mt-3 mb-2"></div>
         <div className="flex-center landing-pad relative z-20 flex-col md:flex-row md:justify-between">
-                <h3 className="max-md:mb-1 font-semibold text-[15px]">© 2024 By Gratmus Digital Services</h3>
+                <h3 className="max-md:mb-1 font-semibold text-[15px]">©Pronext Manpower Agency 2024. All Right Reserved</h3>
                 <div className="flex-center">
                     <span className=''>Follow Us :</span>
                     <div className="pl-2 flex-center">
@@ -43,9 +51,8 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-        <div className="absolute h-60 w-60 rounded-full bg-[#48D08F] -bottom-10 z-10 -right-20"></div>
+        <div className="absolute h-72 w-72 rounded-full bg-[#48D08F] -bottom-10 z-10 -right-20"></div>
         
-        {/* <div className="absolute h-[250px] w-[250px] rounded-full bg-[#beffc8] -bottom-[125px] z-20 -right-[125px]"></div> */}
     </div>
   )
 }

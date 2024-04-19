@@ -2,11 +2,16 @@ import React from 'react'
 import { Svgs } from '../../util/svgs'
 import { _contactinfo } from '../../util/constants'
 import { cn } from '../lib/utils'
+import { DialogClose } from '../ui/dialog'
+import { X } from 'lucide-react'
 
 export default function ContactInfo({className}:{className:string}) {
   return (
-    <div className={cn("pt-4  rounded-r-md  md:sticky top-0 bg-[#24BC75] pb-3 overflow-hidden",className)}>
+    <div className={cn("pt-4  rounded-r-md  lg:sticky top-0 bg-[#24BC75] pb-3 overflow-hidden",className)}>
     <div className="rounded-full h-52 w-52  bg-[#4CD091] px-2 absolute -right-12 -top-4"></div>
+        <DialogClose className='sticky flex justify-end pr-2 w-full z-40 top-2 right-4 '>
+          <X className='h-6 w-6'/>
+         </DialogClose>
     <div className="mx-auto w-fit relative z-20 flex-center">
         <Svgs.customerSvg className='mr-2'/>
         <span className='text-white'>Support</span>   

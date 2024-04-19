@@ -75,6 +75,7 @@ export default function HireTalentForm() {
                   {value:"tech_hiring",label:"Tech Hiring"},
                   {value:"entry_level_hiring",label:"Entry Level Hiring"},
                   {value:"foreign_leadership_hiring",label:"Foreign Leadership Hiring"}]}  
+                others
             />
 
         <div className='w-full  pr-2 sm:w-8/12 mb-6 relative'>

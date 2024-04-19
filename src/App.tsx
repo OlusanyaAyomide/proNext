@@ -13,6 +13,7 @@ import NewService from './pages/NewService'
 import ServiceDetail from './pages/ServiceDetail'
 import QueryProvider from './components/authLayout/QueryProvider'
 import NewPassword from './components/authLayout/Newpassword'
+import USerInfo from './pages/USerInfo'
 
 export default function App() {
 
@@ -26,6 +27,7 @@ export default function App() {
           <Route path='/admin/forms' element={<Forms/>}/>
           <Route path='/admin/users' element={<Users/>}/>
           <Route path='/admin/users/add' element={<AddUser/>}/>
+          <Route path='/admin/users/:id' element={<USerInfo/>}/>
           <Route path='/admin/auth/login' element={<LogIn/>}/>
           <Route path='/admin/auth/reset-password' element={<ResetPassword/>}/>
           <Route path='/admin/auth/new-password' element={<NewPassword/>}/>

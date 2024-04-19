@@ -88,27 +88,27 @@ export const _mockServices =[
     },
     {
         image:"/foreign.png",
-        title:"Health Care",
+        title:"Foreign Language Hiring",
         content:'We specialize in sourcing and recruiting talented individuals fluent in various languages to help your organization thrive internationally. From initial candidate screening to final placement, we ensure you have access to the right linguistic skills and cultural competencies. With Pronext by your side, you can confidently build a multilingual team that excels in driving cross-cultural communication and fostering business growth'   
     },
     {
         image:"/recruitment.png",
-        title:"Logistics",
+        title:"Recruitment Process Outsourcing",
         content:"We understand the challenges businesses face in managing their recruitment processes efficiently while focusing on their core operations. That's where our RPO services come in. By entrusting us with your recruitment needs, you can rest assured that our expert team will handle everything from candidate sourcing and screening to interviewing and onboarding"   
     },
     {
         image:"/tech.png",
-        title:"Insurance",
+        title:"Tech Hiring",
         content:"At Pronext, we specialize in sourcing and recruiting top-tier professionals for all your technical needs. Whether you're looking for software developers, cybersecurity experts, or AI specialists, we have the expertise to connect you with the best talent in the industry. Our comprehensive tech hiring services streamline the recruitment process, saving you time and resources while ensuring you find the perfect fit for your team."
     },
     {
         image:"/entry.png",
-        title:"Health Care",
+        title:"Entry Level Hiring",
         content:"We understand the importance of laying a solid foundation with the right talent. Our specialized services focus on sourcing and recruiting enthusiastic individuals ready to embark on their professional journey and contribute to your organization's success. Whether you seek fresh graduates, interns, or apprentices."   
     },
     {
         image:"/leadership.png",
-        title:"Logistics",
+        title:"Leadership Hiring",
         content:"Our leadership hiring services extend beyond qualifications to seek visionary leaders who ignite company culture. Leveraging expertise, we pinpoint high-caliber candidates with the ideal mix of skills and leadership qualities. Our streamlined process saves you time and resources, offering a confidential search for talent that drives your business forward."
     },
 

@@ -11,7 +11,7 @@ export default function UserMain() {
 
     const {data,isLoading} = useGetRequest<{data:IUser[]}>({queryKey:['all-users'],url:"/admin/retrieve/all/admins"})
 
-  return (
+    return (
     <div className='pt-10'>
         <div className="flex-center mb-4 px-2 justify-between">
             <span className='section-header text-pro-blue'>Users</span>
@@ -21,7 +21,7 @@ export default function UserMain() {
         </div>
         <div className="flex-center mt-10 flex-wrap">
         {data?.data.data.map((item,key)=>(
-            <div key={key} className="w-6/12 sm:w-4/12 md:w-3/12 px-1 ">
+            <Link to={`/admin/users/${item._id}`}  key={key} className="w-6/12 block sm:w-4/12 md:w-3/12 px-1 ">
                     <div className='bg-[url("/user/userbg2.png")] bg-cover mb-5 overflow-hidden px-2 py-8'>
                         <Avatar className='block mb-3 mx-auto h-16 w-16'>
                             <AvatarFallback>PN</AvatarFallback>
@@ -31,7 +31,7 @@ export default function UserMain() {
                         <h3 className="text-center mb-[2px]">admin</h3>
                         <h3 className="text-center mb-[2px] px-2 ">{item.email}</h3>
                     </div>
-            </div>
+            </Link>
         ))}
         </div>
         <FullLoader isLoading={isLoading}/>

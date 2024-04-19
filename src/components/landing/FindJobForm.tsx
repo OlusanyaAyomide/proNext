@@ -19,7 +19,7 @@ import { IResHireForm } from '../../util/resInterfaces';
 import { ISubmitFindJob } from '../../util/mutateInterface';
 import Loader from '../util-component/Loader';
 import JobLocation from './JobLocation';
-
+import DateOfBirthPicker from './DateOfBirthPicker';
 
 
 
@@ -34,7 +34,7 @@ export default function FindJobForm() {
         onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
     })
     const ref = useRef<HTMLInputElement>(null)  
-
+    console.log(errors)
     const location = watch("location")
     const onSubmit:SubmitHandler<IFindJob>= async (data)=>{
         // console.log(data)
@@ -49,8 +49,6 @@ export default function FindJobForm() {
             })
         }
     }
-
- 
  
     const handeFileChange = (e: React.ChangeEvent<HTMLInputElement>)=>{
         const file = e.target.files && e.target.files[0];
@@ -75,7 +73,7 @@ export default function FindJobForm() {
     }
     return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex-center flex-wrap'>
-        <h1 className="text-center section-header mb-3 w-full">Hire A Talent</h1>
+        <h1 className="text-center section-header mb-3 w-full">Find A Job</h1>
     
         <UserInput
             name='firstName'
@@ -112,18 +110,24 @@ export default function FindJobForm() {
             title='Mobile Number'
         />
 
-        <div className='w-full'>
+        <div className='w-full md:w-6/12 md:pr-2'>
             <FormSelect
                 name='qualification'
                 error={errors.qualification?.message}
                 selectTitle='Select education qualification'
                 setValue={setValue}
-                className='mb-4 w-7/12 sm:w-6/12'
+                className=''
                 title='Educational Qualification'
                 items={qualifications}  
                 others
             />
         </div>
+
+        <DateOfBirthPicker
+            error={errors.dateOfBirth?.message}
+            name='dateOfBirth'
+            setValue={setValue}
+        />
 
         <UserInput
             name='experience'
@@ -165,7 +169,7 @@ export default function FindJobForm() {
             error={errors.site?.message}
             selectTitle={location !== "NA"?`Select preferred location from ${location}`:"'N/A (Select N/A if location is not on the list)"}
             setValue={setValue}
-            className='mb-4 w-7/12 sm:w-6/12 sm:pl-2'
+            className='mb-4 sm:mb-3 w-7/12 sm:w-6/12 sm:pl-2'
             title='Site '
             items={location==="NCR"?_NcrsiteItems:location==="Province"?_ProvinceSite:[]}  
             others
@@ -181,7 +185,7 @@ export default function FindJobForm() {
             selectTitle={location}
         /> */}
 
-        <div className='w-full mb-6 relative'>
+        <div className='w-full md:w-6/12 md:pr-2 mb-6 relative'>
             <h3 className='ml-[2px] font-medium  text-gray-800 text-support mb-[2px] md:text-[15px]'>When are you available to walk-in for an interview</h3>
             <Popover>
                 <PopoverTrigger className='bg-offwhite w-full flex justify-between px-2 border rounded-md items-center h-10'>
@@ -210,8 +214,22 @@ export default function FindJobForm() {
             </Popover>
             {errors.interviewDate && <span className="text-red-500 absolute -bottom-5 left-2 ">{errors.interviewDate.message}</span>}
         </div>
+        <FormSelect
+            name='gender'
+            className='w-full md:w-6/12 md:pl-2'
+            error={errors.gender?.message}
+            setValue={setValue}
+            title='Gender'
+            placeholder="Select Gender"
+            items={[
+                {value:"male",label:"Male"},
+                {value:"Female",label:"Female"},
+                {value:"N/A",label:"Prefer not to say"},
+            ]}
+        />
 
         <div className='w-full mb-6 relative'>
+            <h3 className='ml-2 font-medium text-support mb-[2px] md:text-[15px]'>Upload resume</h3>
             <input onChange={handeFileChange} ref={ref} type="file" className="hidden" />
             {!file ? 
             <>

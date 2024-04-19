@@ -36,7 +36,6 @@ export default function LogIn() {
     const onSubmit:SubmitHandler<ILogIn>= async (data)=>{
         console.log(data)
         mutate(data)
- 
     }
     return (
         <Auth>
@@ -66,7 +65,6 @@ export default function LogIn() {
                         {!isPending?<span>Log in user</span>:<Loader/>}
                 </Button>
             </form>
-  
         </Auth>
   )
 }

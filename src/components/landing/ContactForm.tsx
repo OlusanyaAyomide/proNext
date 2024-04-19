@@ -18,7 +18,7 @@ export default function ContactForm() {
  
     return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex-center flex-wrap'>
-        <h1 className="text-center section-header mb-3 w-full">Hire A Talent</h1>
+        <h1 className="text-center section-header mb-3 w-full">Contact Us</h1>
     
         <UserInput
             name='name'

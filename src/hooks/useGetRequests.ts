@@ -16,9 +16,9 @@ interface IGetRequest{
 const DEFAULT= 60 * 1000
 
 export const useGetRequest = <T>({url,staleTime=DEFAULT,detailId,showAdmin=true,...rest}:IGetRequest)=>{
-    
     const [{authCookie},] = useCookies(['authCookie'])
     const adminId = (authCookie?jwtDecode(authCookie as string):null ) as IToken | null
+    console.log(adminId)
     let reqUrl;
     if((showAdmin && detailId)){
         reqUrl = `${url}/${adminId?`${adminId.admin}`:""}/${detailId}`
@@ -28,7 +28,7 @@ export const useGetRequest = <T>({url,staleTime=DEFAULT,detailId,showAdmin=true,
             // reqUrl = `${url}`
         // // reqUrl = detailId?`${url}${adminId?`/${adminId.admin}/${detailId}`:`${url}${adminId?`/${adminId.admin}`:""}`}`:
         // `${url}${adminId?`/${adminId.admin}/${detailId}`}
-
+    console.log(reqUrl)
     return useQuery<AxiosResponse<T>>({...rest,staleTime,queryFn:()=>{
         return request.get(reqUrl) as Promise<AxiosResponse<T>> 
     }})

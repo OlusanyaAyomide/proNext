@@ -26,7 +26,7 @@ export const usePostRequest = <T,G>({url,onSuccess,onError,showSuccess,showError
     return useMutation<AxiosResponse<T>,Error,G>({mutationFn:(body)=>{
         // const staffBody = staffId?{staffid:adminId,...body}:null
         const bodyObject = addId?{adminid:adminId?.admin || undefined,...body}:body
-        return request.post(url,bodyObject,{timeout:10000}) 
+        return request.post(url,bodyObject,{timeout:30000}) 
     },onSuccess:(data)=>{
         if(showSuccess){
             toast({
@@ -47,6 +47,5 @@ export const usePostRequest = <T,G>({url,onSuccess,onError,showSuccess,showError
     if(onError){
         onError(error)
     }
-    
     }})
 }

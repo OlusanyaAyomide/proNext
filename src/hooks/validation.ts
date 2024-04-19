@@ -45,6 +45,8 @@ export interface IFindJob{
     experienceAccount:string
     location:string
     interviewDate:Date
+    dateOfBirth:Date
+    gender:String
     resume:string
     site:string
 }
@@ -116,6 +118,8 @@ export const findJobSchema: yup.ObjectSchema<IFindJob> = yup.object({
     experienceAccount: yup.string().required(),
     location: yup.string().required(),
     interviewDate: yup.date().required(),
+    dateOfBirth: yup.date().required(),
+    gender:yup.string().required(),
     resume:yup.string().required(),
     site:yup.string().required()
 });

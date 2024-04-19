@@ -2,6 +2,8 @@ import React, { useState,useEffect } from 'react'
 import { cn } from '../lib/utils'
 import { Svgs } from '../../util/svgs'
 import { Button } from '../ui/button'
+import { DialogClose } from '../ui/dialog'
+import { X } from 'lucide-react'
 
 
 interface IDialogSlider {
@@ -46,8 +48,11 @@ export default function DialogSliders({className,slides}:IDialogSlider) {
       }, [count]);
     
   return (
-    <div className={cn("pt-4  rounded-r-md md:sticky top-0  bg-[#24BC75] pb-3 overflow-hidden",className)}>
-        <div className="rounded-full h-52 w-52  bg-[#4CD091] px-2 absolute -right-12 -top-4"></div>
+    <div className={cn("pt-4  w-full rounded-r-md lg:sticky top-0  bg-[#24BC75] pb-3 overflow-hidden",className)}>
+        <div className="rounded-full h-52 w-52 max-lg:-top-16 bg-[#4CD091] px-2 right-0 lg:-right-12 absolute  -top-8"></div>
+        <DialogClose className='lg:absolute max-lg:fixed max-lg:top-[3vh]  right-2'>
+            <X className='h-6 w-6'/>
+        </DialogClose>
         <div className="mx-auto w-fit relative z-20 flex-center">
             <Svgs.customerSvg className='mr-2'/>
             <span className='text-white'>Support</span>   

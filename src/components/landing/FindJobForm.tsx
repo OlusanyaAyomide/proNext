@@ -34,7 +34,7 @@ export default function FindJobForm() {
         onSuccess:()=>{setFile(null),reset(),setDate(undefined),setFile(null)}
     })
     const ref = useRef<HTMLInputElement>(null)  
-    console.log(errors)
+
     const location = watch("location")
     const onSubmit:SubmitHandler<IFindJob>= async (data)=>{
         // console.log(data)

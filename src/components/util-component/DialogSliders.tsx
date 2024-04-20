@@ -50,7 +50,7 @@ export default function DialogSliders({className,slides}:IDialogSlider) {
   return (
     <div className={cn("pt-4  w-full rounded-r-md lg:sticky top-0  bg-[#24BC75] pb-3 overflow-hidden",className)}>
         <div className="rounded-full h-52 w-52 max-lg:-top-16 bg-[#4CD091] px-2 right-0 lg:-right-12 absolute  -top-8"></div>
-        <DialogClose className='lg:absolute max-lg:fixed max-lg:top-[3vh]  right-2'>
+        <DialogClose className='lg:absolute max-lg:hidden max-lg:top-[3vh]  right-2'>
             <X className='h-6 w-6'/>
         </DialogClose>
         <div className="mx-auto w-fit relative z-20 flex-center">

@@ -17,7 +17,7 @@ interface IDateOFBirth{
 export default function DateOfBirthPicker({setValue,name,error}:IDateOFBirth) {
     const [isOpen,setisOpen] = useState(false)
     const [date,setDate] = useState<Date>(new Date())
-    const [yearArray,setArray] = useState([2002,2004])
+    const [yearArray,setArray] = useState([2021,2027])
     const [isMounted,setIsMounted] = useState(true)
     const prevYears = generateYearsArray()
     console.log(name)
@@ -33,7 +33,7 @@ export default function DateOfBirthPicker({setValue,name,error}:IDateOFBirth) {
                 </PopoverTrigger>
                 <PopoverContent className='shadow-lg h-fit w-[310px]'>
                     <Select onValueChange={(val)=>{
-                            setArray([Number(val)-2,Number(val)])
+                            setArray([Number(val)-3,Number(val)+3])
                             setIsMounted(false)
                             setTimeout(()=>{setIsMounted(true)},200)
                         }
@@ -54,6 +54,7 @@ export default function DateOfBirthPicker({setValue,name,error}:IDateOFBirth) {
                     <Calendar
                         mode="single"
                         fromYear={yearArray[0]}
+                        defaultMonth={new Date(yearArray[1]-3, 0)}
                         toYear={yearArray[1]}
                         selected={date}
                         onSelect={(date)=>{

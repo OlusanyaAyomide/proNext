@@ -18,6 +18,7 @@ import Loader from '../util-component/Loader';
 
 
 export default function HireTalentForm() {
+    console.log("Rerender")
     const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<IHowItWorksForm>(
         {resolver:yupResolver(howItWorksFormSchema)})
 

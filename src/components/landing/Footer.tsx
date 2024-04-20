@@ -29,13 +29,13 @@ export default function Footer() {
                 <Logo className='-ml-4 scale-110'/>
                 <ContactDialog className='bg-transparent  border-white max-sm:scale-[80%]'/>
             </div>
-            <div className="my-3 ml-auto flex flex-wrap max-w-[250px]">
+            <div className="my-3 md:ml-auto flex flex-wrap max-w-[250px]">
                 <span className='block mb-2 w-5/12 pr-2'>Email Addrss</span>
-                <span className='block mb-2 w-7/12 pr-2 text-right'>pronext@gmail.com</span>
+                <span className='block mb-2 w-7/12 pr-2 md:text-right'>pronext@gmail.com</span>
                 <span className='block mb-2 w-5/12 pr-2'>Address</span>
-                <span className='block mb-2 w-7/12 pr-2 text-right'>myadress at philipines</span>
+                <span className='block mb-2 w-7/12 pr-2 md:text-right'>myadress at philipines</span>
                 <span className='block mb-2 w-5/12 pr-2'>Phone No</span>
-                <span className='block mb-2 w-7/12 pr-2 text-right'>0834567792</span>
+                <span className='block mb-2 w-7/12 pr-2 md:text-right'>0834567792</span>
             </div> 
            
         </div>

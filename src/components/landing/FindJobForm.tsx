@@ -229,7 +229,7 @@ export default function FindJobForm() {
         />
 
         <div className='w-full mb-6 relative'>
-            <h3 className='ml-2 font-medium text-support mb-[2px] md:text-[15px]'>Upload resume</h3>
+            <h3 className='ml-2 font-medium text-support mb-[2px] md:text-[15px]'>Upload Resume/Cv</h3>
             <input onChange={handeFileChange} ref={ref} type="file" className="hidden" />
             {!file ? 
             <>

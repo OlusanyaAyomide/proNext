@@ -53,6 +53,7 @@ export default function ContactForm() {
             className='mb-6 w-6/12'
             title='Enquiry Category'
             items={_enquiryCategories}  
+            others
         />
 
         <div className="w-full  mb-10 relative ">

@@ -439,7 +439,7 @@ export const slideImages2=[
     },
     {
         title:"Walkin For An Interview",
-        content:`We provide comprehensive support to candidates thr1oughout the interview process, offering guidance on techniques, company culture insights, and addressing their concerns. We maintain regular communication, updating candidates on application status and next steps. Our commitment extends to preparing candidates until they walk into the interview, addressing any last-minute inquiries, and providing additional resources for confidence.and instructions on how to prepare.`,
+        content:`We provide comprehensive support to candidates throughout the interview process, offering guidance on techniques, company culture insights, and addressing their concerns. We maintain regular communication, updating candidates on application status and next steps. Our commitment extends to preparing candidates until they walk into the interview, addressing any last-minute inquiries, and providing additional resources for confidence.and instructions on how to prepare.`,
         image:"/support6.png"      
     },
     {

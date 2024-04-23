@@ -28,11 +28,12 @@ export interface ICreateNewUser
     lastname:string,
     firstname:string,
     email:string,
-    password:string,
+    password?:string,
     address:string,
     photo:string,
     dob:string,
     phone:string
+    staffid?:string
 }
 
 export interface ISubmitNewService{
@@ -43,4 +44,13 @@ export interface ISubmitNewService{
     city:string,
     category:string
     
+}
+
+
+export interface IResContactUs {
+    name:string,
+    email:string,
+    phone:string,
+    enquiry:string,
+    message:string
 }

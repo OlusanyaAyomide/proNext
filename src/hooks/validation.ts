@@ -11,6 +11,18 @@ export interface INewUserSchema{
     image:string
 }
 
+export interface IEditUserSchema{
+    id:string
+    firstName:string
+    lastName:string
+    email:string
+    phoneNumber:string
+    dateOfBirth:Date
+    gender:string
+    address:string   
+    image:string
+}
+
 export interface ILogIn{
     email:string
     password:string

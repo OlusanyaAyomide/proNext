@@ -6,14 +6,31 @@ import FormSelect from '../util-component/FormSelect';
 import { Button } from '../ui/button';
 import { _enquiryCategories } from '../../util/constants';
 import { Textarea } from '../ui/textarea';
+import { usePostRequest } from '../../hooks/usePostRequests';
+import Loader from '../util-component/Loader';
+import { IResContactUs } from '../../util/mutateInterface';
 
 
+// {
+//     name:string
+//     email:string
+//     mobileNumber:string
+//     category:string
+//     message:string
+// }
 export default function ContactForm() {
-    const {register,handleSubmit,formState:{errors},setValue} = useForm<IContactForm>(
+    const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<IContactForm>(
         {resolver:yupResolver(contactFormSchema)})
 
+
+    const {isPending,mutate} = usePostRequest<void,IResContactUs>({url:"/user/contactus",addId:false,showSuccess:"Form succesfully submitted",onSuccess:()=>{
+        reset()
+    }})
+
     const onSubmit:SubmitHandler<IContactForm>= async (data)=>{
-        console.log(data)
+        mutate({message:data.message,name:data.name,email:data.email,
+            phone:data.mobileNumber,enquiry:data.category}
+        )
     }
  
     return (
@@ -64,7 +81,9 @@ export default function ContactForm() {
         </div>
     
 
-        <Button variant={"deep"} className='block hover:brightness-110 w-full my-6'>Submit</Button>
+        <Button disabled={isPending} variant={"deep"} className='block hover:brightness-110 w-full my-6'>
+            {!isPending?<span>Submit</span>:<Loader/>}
+        </Button>
                           
     </form>
   )

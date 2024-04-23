@@ -3,7 +3,7 @@ import { Svgs } from '../../../util/svgs'
 import { Button } from '../../ui/button'
 import { yupResolver } from "@hookform/resolvers/yup"
 import { useForm ,SubmitHandler} from 'react-hook-form';
-import { INewUserSchema, newUserSchema } from '../../../hooks/validation';
+import { IEditUserSchema, INewUserSchema, newUserSchema } from '../../../hooks/validation';
 import UserInput from './UserInput';
 import { Popover, PopoverContent, PopoverTrigger } from '../../ui/popover';
 import { Calendar } from '../../ui/calendar';
@@ -17,25 +17,36 @@ import { ICreateNewUser } from '../../../util/mutateInterface';
 import { imgUrl } from '../../util-component/keys';
 import Loader from '../../util-component/Loader';
 import { useQueryClient, useQueryErrorResetBoundary } from '@tanstack/react-query';
+import { IUser } from '../../../util/resInterfaces';
 
+interface IUserAdd{
+    user?:IEditUserSchema
+}
 
-export default function UserAdd() {
+export default function UserAdd({user}:IUserAdd) {
     const [file,setFile] = useState<File | null>(null)
-    const [url,setUrl] = useState("")
+    const [url,setUrl] = useState(user?.image || "")
     const [date, setDate] = useState<Date | undefined>(undefined)
     const ref = useRef<HTMLInputElement>(null)
     const {isPending,mutateAsync} = useCloudUpload()
     const queryClient = useQueryClient()
 
     const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<INewUserSchema>(
-    {resolver:yupResolver(newUserSchema)}
+    {resolver:yupResolver(newUserSchema),defaultValues:user}
     )
-    const {isPending:pending,mutate} = usePostRequest<void,ICreateNewUser>({url:"/admin/signup",showError:true,showSuccess:"New User has been added",addId:false,
+
+    const {isPending:pending,mutate} = usePostRequest<void,ICreateNewUser>({url:user?"/admin/update/staff":"/admin/signup",showError:true,showSuccess:user?"User profile has been edited succesfully":"New user added succesfully",addId:!!user,
     onSuccess:()=>{
-        setFile(null),reset(),setDate(undefined),setFile(null)
+        setFile(null),setDate(undefined),setFile(null)
         queryClient.invalidateQueries({queryKey:["all-users"]})
-    }
-})
+        if(user){
+            queryClient.invalidateQueries({queryKey:['user-detail',user.id],type:"all"})
+            }
+        if(!user){reset()}
+        }
+  
+    })
+    console.log(errors)
 
 
     const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{ 
@@ -54,13 +65,18 @@ export default function UserAdd() {
 
 
     const onSubmit:SubmitHandler<INewUserSchema>= async (data)=>{
-        if(!file){return}
-        const uploadId = await mutateAsync({file})
-        if(uploadId.data){
-            const imgurl = `${imgUrl}${uploadId.data.public_id}.png`  
-            mutate({lastname:data.lastName,firstname:data.firstName,dob:data.dateOfBirth.toISOString(),
-                email:data.email,phone:data.phoneNumber,photo:imgurl,password:`${data.firstName}1234`,address:data.address
-            })
+        let imageUrl= user?user.image:""
+        if (file){
+            const uploadId = await mutateAsync({file})
+            imageUrl = `${imgUrl}${uploadId.data.public_id}.png`  
+        }
+        
+        if(imageUrl){
+            const ApiData = {lastname:data.lastName,firstname:data.firstName,dob:data.dateOfBirth.toISOString(),
+                email:data.email,phone:data.phoneNumber,photo:imageUrl,address:data.address
+            }
+            user?mutate({...ApiData,staffid:user.id}): mutate({...ApiData,password:`${data.firstName}1234`})
+           
         }
     }
 
@@ -69,7 +85,7 @@ export default function UserAdd() {
         <h1 className="pl-2 section-header">Add User</h1>
         <div className="mt-4 card pb-6 px-2">
             <div className="w-fit mx-auto relative">
-                {(url && file)?
+                {(url)?
                     <Avatar className='h-24 border shrink-0 w-24 overflow-hidden relative'>
                         <AvatarFallback>ND</AvatarFallback>
                         <AvatarImage className='object-cover' src={url}/>
@@ -145,6 +161,7 @@ export default function UserAdd() {
                 className='w-full pl-2 sm:w-6/12 mb-4'
                 setValue={setValue}   
                 name='gender'
+                defaultValue={user?.gender}
                 items={[{value:"Male",label:"Male"},
                         {value:"Female",label:"Female"},
                         {value:"Others",label:"Others"}]} 
@@ -159,7 +176,7 @@ export default function UserAdd() {
             </div>
             <div className="w-full sm:w-6/12 sm:pl-4 sm:flex sm:items-end sm:h-[200px] max-sm:mt-5">
                     <Button disabled={(isPending || pending)} className='mt-5 block mx-auto px-10'>
-                    {!(pending || isPending)?<span>Add user</span>:<Loader/>}
+                    {!(pending || isPending)?<span>{user?"Edit":"Add"} user</span>:<Loader/>}
                     </Button>
             </div>
         </form>

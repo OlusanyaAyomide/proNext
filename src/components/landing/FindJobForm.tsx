@@ -9,7 +9,7 @@ import { Svgs } from '../../util/svgs';
 import { Calendar } from '../ui/calendar';
 import { Button } from '../ui/button';
 import { formatDate } from '../lib/utils';
-import { _NcrsiteItems, _ProvinceSite, _exprienceList, qualifications } from '../../util/constants';
+import { _NcrsiteItems, _ProvinceSite, _exprienceList, qualifications, sliderImages } from '../../util/constants';
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { toast } from '../ui/use-toast';
 import { cloudinaryUploader, useCloudUpload } from '../util-component/cloudinaryUploader';
@@ -20,6 +20,8 @@ import { ISubmitFindJob } from '../../util/mutateInterface';
 import Loader from '../util-component/Loader';
 import JobLocation from './JobLocation';
 import DateOfBirthPicker from './DateOfBirthPicker';
+import HireTalentForm from './HireTalentForm';
+import JobDialog from '../util-component/JobDialog';
 
 
 
@@ -253,7 +255,10 @@ export default function FindJobForm() {
             {!(pending || isPending)?<span>Submit</span>:<Loader/>}</Button>
             <h3 className="flex-center pr-2 justify-end w-full mt-2 flex-center">
                 <span>do you want to hire a talent</span>
-                <span className="underline cursor-pointer hover:font-bold font-semibold decoration-deepGreen ml-2">Click here</span>
+                <JobDialog form={<HireTalentForm/>} slide={sliderImages}>
+                    <span className="underline cursor-pointer hover:font-bold font-semibold decoration-deepGreen ml-2">Click here</span>    
+                </JobDialog>
+              
             </h3>
     </form>
   )

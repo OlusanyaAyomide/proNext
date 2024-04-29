@@ -76,3 +76,64 @@ export interface IHireFromRes{
     createdAt:string,
     __v: 0
 }
+
+export type FormStatus = "NewForm" | "Replied" | "Interview" | "NoResponse" | "Others" | "Rejected Offer" | "OnHold" | "Hired" | "All";
+
+export type FormType = "hiretalent" | "all" | "contactus" | "findjob"
+
+export interface IContactRes{
+    _id: string;
+    status: FormStatus;
+    name: string;
+    email: string;
+    phone: string;
+    enquiry: string;
+    message: string;
+    createdAt: string;
+    __v: number;
+}
+
+
+export interface IHireTalentRes {
+    _id: string;
+    name: string;
+    email: string;
+    phone: string;
+    scheduledate: string;
+    proposaltype: string;
+    additionalmessage: string;
+    status: FormStatus;
+    createdAt: string;
+    __v: number;
+}
+
+export interface IFindJobRes {
+    _id: string;
+    lastname: string;
+    firstname: string;
+    dob: string;
+    gender: string;
+    email: string;
+    phone: string;
+    status: FormStatus;
+    educationalaccount: string;
+    educationalqualification: string;
+    bpoexperience: string;
+    location: string;
+    site: string;
+    scheduledate: string;
+    createdAt: string;
+    __v: number;
+}
+
+
+export interface IFormResponse{
+    status_code:number
+    status:string
+    message:string   
+    data:(IFindJobRes | IHireTalentRes | IContactRes)[]
+    pagination:{
+        page:string
+        limit:number
+    }
+}

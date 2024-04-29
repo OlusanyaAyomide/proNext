@@ -251,10 +251,10 @@ export default function FindJobForm() {
 
         <Button disabled={(pending || isPending)} variant={"deep"} className='block hover:brightness-110 w-full my-6'>
             {!(pending || isPending)?<span>Submit</span>:<Loader/>}</Button>
-        <h3 className="flex-center pr-2 justify-end w-full mt-2 flex-center">
-            <span>Do you need a job?</span>
-            <span className="underline cursor-pointer hover:font-bold font-semibold decoration-deepGreen ml-2">Click here</span>
-        </h3>
+            <h3 className="flex-center pr-2 justify-end w-full mt-2 flex-center">
+                <span>do you want to hire a talent</span>
+                <span className="underline cursor-pointer hover:font-bold font-semibold decoration-deepGreen ml-2">Click here</span>
+            </h3>
     </form>
   )
 }

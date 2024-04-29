@@ -16,7 +16,8 @@ export const chartConfig = {
     scales: {
     x: {
         grid: {
-          display: false
+          display: false,
+          borderColor:"red"
         }
       },
     y: {

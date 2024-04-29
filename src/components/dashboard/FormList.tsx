@@ -4,6 +4,7 @@ import {Table,TableBody,TableCaption,TableCell,TableFooter,TableHead,TableHeader
     TableRow,
   } from "../../components/ui/table"
 import { Button } from '../ui/button'
+import { useFormFilter } from '../../store/useFormFilters';
 
 export interface IForms{
     name: string;
@@ -14,7 +15,10 @@ export interface IForms{
     status?:"replied" | "new form" | "No response" | "interviewed",
 }   
 export default function FormList({form,isRecent}:{form:IForms[],isRecent?:boolean}) {
-  return (
+    const {date,status,type} = useFormFilter()
+    // console.log(date,status,type)
+
+    return (
     <Table>
         <TableHeader className='mb-3 rounded-lg overflow-hidden '>
             <TableRow className='bg-[#F1F4F9] py-2 rounded-lg overflow-hidden' >

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { Route,BrowserRouter,Routes } from 'react-router-dom'
 import LandingPage from './pages/LandingPage'
 import ScrollRestore from './components/layout/ScrollResrote'

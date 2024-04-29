@@ -5,16 +5,16 @@ import { useFormFilter } from '../../store/useFormFilters'
 
 
 interface IFilterFormType{
-    filters:FormType[]
+    filters:FormStatus[]
     title:string,
 }
 
-export default function FIlterFormType({filters,title}:IFilterFormType) {
-    const {type,setType} = useFormFilter()
-    const [selected,setSelected] = useState<FormType[]>(type)
+export default function FIlterFormStatus({filters,title}:IFilterFormType) {
+    const {setStatus,status} = useFormFilter()
+    const [selected,setSelected] = useState<FormStatus[]>(status)
 
 
-    const handleShuffle = (item:FormType)=>{
+    const handleShuffle = (item:FormStatus)=>{
         setSelected((prev)=>{
             if(!prev.includes(item)){
                 console.log("heree,inner")
@@ -43,7 +43,7 @@ export default function FIlterFormType({filters,title}:IFilterFormType) {
             ))}
         </div>
         <h1 className="mt-3 pl-3">*You Can Choose Multiple Order types</h1>
-        <Button onClick={()=>{setType(selected)}} className='px-10 active:bg-green-600 mb-8 rounded-md mx-auto mt-5 block'>Apply</Button>
+        <Button onClick={()=>{setStatus(selected)}} className='px-10 active:bg-green-600 mb-8 rounded-md mx-auto mt-5 block'>Apply</Button>
     </div>
   )
 }

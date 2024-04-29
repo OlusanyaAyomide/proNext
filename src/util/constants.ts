@@ -1,4 +1,5 @@
 import { IForms } from "../components/dashboard/FormList"
+import { FormStatus, FormType } from "./resInterfaces"
 import { Svgs } from "./svgs"
 
 export const _homeNavMenu =[
@@ -319,12 +320,10 @@ export const  _allForms:IForms[]=[
 
 
 
-export const _formTypeFilters=[
-    'WFH','WOS','WFH/WOS','Healthcare','Insurance','Logistics','Candidate','COntact Us','Find A Talent'
-]
+export const _formTypeFilters:FormType[]=["hiretalent" , "all" , "contactus" , "findjob"]
 
-export const _FormStatusFilter=[
-    "Replied",'Interview','No Response','New Form','Hired','On Hold','Reject Offer'
+export const _FormStatusFilter:FormStatus[]=[
+    "NewForm" , "Replied" , "Interview" ,  "NoResponse" , "Others" , "Rejected Offer" , "OnHold" , "Hired" , "All"
 ]
 
 export const _mockUsers=[

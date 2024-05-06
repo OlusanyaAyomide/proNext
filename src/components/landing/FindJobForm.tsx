@@ -8,7 +8,7 @@ import { Popover ,PopoverTrigger,PopoverContent} from '../ui/popover';
 import { Svgs } from '../../util/svgs';
 import { Calendar } from '../ui/calendar';
 import { Button } from '../ui/button';
-import { formatDate } from '../lib/utils';
+import { formatDate, getTodayDateString } from '../lib/utils';
 import { _NcrsiteItems, _ProvinceSite, _exprienceList, qualifications, sliderImages } from '../../util/constants';
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { toast } from '../ui/use-toast';
@@ -47,7 +47,9 @@ export default function FindJobForm() {
             mutate({
                email:data.email,firstname:data.firstName,lastname:data.lastName,phone:data.mobileNumber,
                scheduledate:data.interviewDate.toISOString(),educationalaccount:data.experienceAccount, 
-               educationalqualification:data.qualification,bpoexperience:data.experience.toString(),location:data.location,site:data.site,file:imgurl,type:"form upload"
+               educationalqualification:data.qualification,bpoexperience:data.experience.toString(),location:data.location,site:data.site,file:imgurl,type:"form upload",
+               dob:data.dateOfBirth.toISOString(),
+               gender:data.gender,createdAt:getTodayDateString()
             })
         }
     }

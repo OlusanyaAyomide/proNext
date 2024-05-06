@@ -8,7 +8,7 @@ import { Popover ,PopoverTrigger,PopoverContent} from '../ui/popover';
 import { Svgs } from '../../util/svgs';
 import { Calendar } from '../ui/calendar';
 import { Button } from '../ui/button';
-import { formatDate } from '../lib/utils';
+import { formatDate, getTodayDateString } from '../lib/utils';
 import { Textarea } from '../ui/textarea';
 import { usePostRequest } from '../../hooks/usePostRequests';
 import { IResHireForm } from '../../util/resInterfaces';
@@ -30,7 +30,7 @@ export default function HireTalentForm() {
 
     const onSubmit:SubmitHandler<IHowItWorksForm>= async (data)=>{
         const {scheduledDate,mobileNumber,proposal,additionalMessage,...rest} = data
-        mutate({scheduledate:scheduledDate.toISOString(),phone:mobileNumber,proposaltype:proposal,additionalmessage:additionalMessage,...rest})
+        mutate({scheduledate:scheduledDate.toISOString(),phone:mobileNumber,proposaltype:proposal,additionalmessage:additionalMessage,createdAt:getTodayDateString(),...rest})
     }
 
     return (

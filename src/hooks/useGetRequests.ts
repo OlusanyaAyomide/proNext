@@ -12,18 +12,18 @@ interface IGetRequest{
     staleTime?:number
     detailId?:string
     showAdmin?:boolean
+    param?:string
 }
 const DEFAULT= 60 * 1000
 
-export const useGetRequest = <T>({url,staleTime=DEFAULT,detailId,showAdmin=true,...rest}:IGetRequest)=>{
+export const useGetRequest = <T>({url,staleTime=DEFAULT,param="",detailId,showAdmin=true,...rest}:IGetRequest)=>{
     const [{authCookie},] = useCookies(['authCookie'])
     const adminId = (authCookie?jwtDecode(authCookie as string):null ) as IToken | null
-    console.log(adminId)
     let reqUrl;
     if((showAdmin && detailId)){
-        reqUrl = `${url}/${adminId?`${adminId.admin}`:""}/${detailId}`
+        reqUrl = `${url}/${adminId?`${adminId.admin}`:""}/${detailId}${param}`
     } else{
-        reqUrl = `${url}${adminId?`/${adminId.admin}`:""}`
+        reqUrl = `${url}${adminId?`/${adminId.admin}`:""}${param}`
     } 
             // reqUrl = `${url}`
         // // reqUrl = detailId?`${url}${adminId?`/${adminId.admin}/${detailId}`:`${url}${adminId?`/${adminId.admin}`:""}`}`:

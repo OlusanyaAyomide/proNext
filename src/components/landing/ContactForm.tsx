@@ -9,15 +9,9 @@ import { Textarea } from '../ui/textarea';
 import { usePostRequest } from '../../hooks/usePostRequests';
 import Loader from '../util-component/Loader';
 import { IResContactUs } from '../../util/mutateInterface';
+import { getTodayDateString } from '../lib/utils';
 
 
-// {
-//     name:string
-//     email:string
-//     mobileNumber:string
-//     category:string
-//     message:string
-// }
 export default function ContactForm() {
     const {register,handleSubmit,formState:{errors},setValue,reset} = useForm<IContactForm>(
         {resolver:yupResolver(contactFormSchema)})
@@ -29,7 +23,8 @@ export default function ContactForm() {
 
     const onSubmit:SubmitHandler<IContactForm>= async (data)=>{
         mutate({message:data.message,name:data.name,email:data.email,
-            phone:data.mobileNumber,enquiry:data.category}
+            phone:data.mobileNumber,enquiry:data.category,createdAt:getTodayDateString()
+        }
         )
     }
  

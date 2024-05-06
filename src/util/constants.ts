@@ -1,4 +1,4 @@
-import { IForms } from "../components/dashboard/FormList"
+// import { IForms } from "../components/dashboard/FormList"
 import { FormStatus, FormType } from "./resInterfaces"
 import { Svgs } from "./svgs"
 
@@ -180,7 +180,7 @@ export const _dashboardStats =[
     },
 ]
 
-export const  _mockRecent:IForms[]=[
+export const  _mockRecent =[
     {
         name:"Fagurunsi Jerry",
         phoneNum:"60903364755",
@@ -219,7 +219,7 @@ export const  _mockRecent:IForms[]=[
 
 
 
-export const  _allForms:IForms[]=[
+export const  _allForms = [
     {
         name:"Fagurunsi Jerry",
         phoneNum:"60903364755",
@@ -320,10 +320,10 @@ export const  _allForms:IForms[]=[
 
 
 
-export const _formTypeFilters:FormType[]=["hiretalent" , "all" , "contactus" , "findjob"]
+export const _formTypeFilters:FormType[]=["hiretalent" , "contactus" , "findjob"]
 
 export const _FormStatusFilter:FormStatus[]=[
-    "NewForm" , "Replied" , "Interview" ,  "NoResponse" , "Others" , "Rejected Offer" , "OnHold" , "Hired" , "All"
+    "NewForm" , "Replied" , "Interview" ,  "NoResponse" , "Rejected Offer" , "OnHold" , "Hired" 
 ]
 
 export const _mockUsers=[

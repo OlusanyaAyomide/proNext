@@ -39,3 +39,23 @@ export const generateYearsArray=() =>{
   
     return Array.from({ length: currentYear - startYear + 1 }, (_, index) => currentYear - index);
 }
+
+
+export function convertToTitleCase(input: string): string {
+  return input.split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+      .join(' ');
+}
+
+
+
+export const getTodayDateString = ()=>{
+  const currentDate = new Date();
+  currentDate.setHours(0);
+  currentDate.setMinutes(0);
+  currentDate.setSeconds(0);
+  currentDate.setMilliseconds(0);
+  
+  const isoString = currentDate.toISOString();
+  return isoString
+}

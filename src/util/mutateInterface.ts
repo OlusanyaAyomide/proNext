@@ -1,3 +1,5 @@
+import { FormStatus, FormType } from "./resInterfaces"
+
 export interface ISubmitHireTalent{
     email:string,
     name:string,
@@ -5,6 +7,7 @@ export interface ISubmitHireTalent{
     scheduledate:string,
     proposaltype:string,
     additionalmessage:string
+    createdAt:string
 }
 
 export interface ISubmitFindJob{
@@ -19,7 +22,10 @@ export interface ISubmitFindJob{
     location:string,
     site:string,
     file:string,
-    type:string
+    type:string,
+    dob:string,
+    gender:string,
+    createdAt:string
 }
 
 
@@ -52,5 +58,12 @@ export interface IResContactUs {
     email:string,
     phone:string,
     enquiry:string,
-    message:string
+    message:string,
+    createdAt:string
+}
+
+export interface IUpdateStatus{
+    type : FormType,
+    status : string,
+    formid : string
 }

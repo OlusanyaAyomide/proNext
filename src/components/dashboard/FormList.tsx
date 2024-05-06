@@ -1,25 +1,19 @@
 import React from 'react'
 import { _mockRecent } from '../../util/constants'
-import {Table,TableBody,TableCaption,TableCell,TableFooter,TableHead,TableHeader,
+import {Table,TableBody,TableCell,TableHead,TableHeader,
     TableRow,
   } from "../../components/ui/table"
 import { Button } from '../ui/button'
-import { useFormFilter } from '../../store/useFormFilters';
+import {  IMixedFormArray } from '../../util/resInterfaces';
+import { formatDateToString } from '../lib/utils';
+import StatusButton from '../form/StatusButton';
+import { Link } from 'react-router-dom';
 
-export interface IForms{
-    name: string;
-    phoneNum: string;
-    date: string;
-    exp: string;
-    city: string;
-    status?:"replied" | "new form" | "No response" | "interviewed",
-}   
-export default function FormList({form,isRecent}:{form:IForms[],isRecent?:boolean}) {
-    const {date,status,type} = useFormFilter()
-    // console.log(date,status,type)
 
-    return (
-    <Table>
+export default function FormList({form,isRecent}:{form:IMixedFormArray,isRecent?:boolean}) {
+    if(!form){return <span>Server Errror</span>}
+    return(
+        <Table>
         <TableHeader className='mb-3 rounded-lg overflow-hidden '>
             <TableRow className='bg-[#F1F4F9] py-2 rounded-lg overflow-hidden' >
                 <TableHead>
@@ -31,9 +25,6 @@ export default function FormList({form,isRecent}:{form:IForms[],isRecent?:boolea
                 <TableHead className='max-md:hidden'>
                     <span>Date</span>
                 </TableHead>
-                <TableHead className='max-sm:hidden'>
-                    <span>Experiences</span>
-                </TableHead>
                 <TableHead>
                     <span>City</span>
                 </TableHead>
@@ -42,45 +33,45 @@ export default function FormList({form,isRecent}:{form:IForms[],isRecent?:boolea
                 </TableHead>
             </TableRow>
         </TableHeader>
-        <TableBody>
-                {form.map((item,key)=>(
-                    <TableRow key={key} className='text-center'>
-                        <TableCell>
-                            <span>{item.name}</span>
-                        </TableCell>
-                        <TableCell className='max-sm:hidden'>
-                            <span>{item.phoneNum}</span>
-                        </TableCell>
-                        <TableCell className='max-md:hidden'>
-                            <span>{item.date}</span>
-                        </TableCell>
-                        <TableCell className='max-sm:hidden'>
-                            <span>{item.exp}</span>
-                        </TableCell>
-                        <TableCell>
-                            <span>{item.city}</span>
-                        </TableCell>
-                        <TableCell>
-                            {isRecent?
-                                <Button className='block bg-[#00B69B] hover:bg-[#00B69B] mx-auto px-3 lg:px-6 text-sm h-9'>View</Button>
-                            :
-                                item.status === "replied"?
-                                <Button className='block rounded-sm w-[100px] text-[#00B69B] bg-[#00B69B]/30 hover:bg-[#00B69B]/40 mx-auto px-3  text-sm h-9'>Replied</Button>
-                            :
-                                item.status === "new form"?
-                            <Button className='block text-gray-800 rounded-sm w-[100px] bg-gray-500/30 hover:bg-gray-500/40 mx-auto px-3  text-sm h-9'>New Form</Button>
+            <TableBody>
+            {form.map((item,key)=>{
+                const isContactus =  'enquiry' in item?{...item}:null
+                const isHireTalent    = 'additionalmessage' in item?{...item}:null
+                const isFindJob = 'educationalqualification' in item?{...item}:null
+                return <TableRow key={key} className='text-center relative group'>
+                    <TableCell>
+                        <span>
+                            {isFindJob?`${isFindJob.firstname} ${isFindJob.lastname}`:
+                            isContactus?isContactus.name:isHireTalent?isHireTalent.name:""}
+                        </span>
+                        <div className='relative'>
+                        <Link className=' left-2 -top-12 hidden group-hover:block group-hover:absolute' to=
+                    {`/admin/forms/${isHireTalent?"hiretalent":isContactus?"contactform":"findjob"}/${item._id}`}
+                    >
+                        <Button className='bg-main text-pro-blue h-8 shadow-md'><span className='text-white'>View Details</span></Button>
+                    </Link>
+                        </div>
+                    </TableCell>
+                    <TableCell className='max-sm:hidden'>
+                        <span>{item.phone}</span>
+                    </TableCell>
+                    <TableCell className='max-md:hidden'>
+                        <span>{formatDateToString(item.createdAt)}</span>
+                    </TableCell>
+                    <TableCell>
+                        <span>{isFindJob?isFindJob.location:"N/A"}</span>
+                    </TableCell>
+                    <TableCell>
+                        {isRecent?
+                            <Button className='block bg-[#00B69B] hover:bg-[#00B69B] mx-auto px-3 lg:px-6 text-sm h-9'>View</Button>
                         :
-                                item.status === "No response"?
-                                <Button className='block rounded-sm w-[100px] text-red-500 bg-red-500/30 hover:bg-red-500/30 mx-auto px-3  text-sm h-9'>No Response</Button>
-                            :
-                                item.status === "interviewed"?
-                                <Button className='block text-purple-500 rounded-sm w-[100px] bg-purple-500/30 hover:bg-purple-500/40 mx-auto px-3  text-sm h-9'>Interviewed</Button>:""
-                            }
-
-                        </TableCell>
-                    </TableRow>
-                ))}
+                            <StatusButton status={item.status}/>
+                        }
+                    </TableCell>
+                </TableRow>
+            })}
             </TableBody>
-    </Table>
-  )
+        </Table>
+        )
+
 }

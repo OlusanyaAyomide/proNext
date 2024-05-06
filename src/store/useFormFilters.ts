@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { FormStatus, FormType } from "../util/resInterfaces";
+import { _FormStatusFilter, _formTypeFilters } from "../util/constants";
 
 
 
@@ -29,18 +30,19 @@ export const useFormFilter = create<IuseFormFilter>((set)=>({
             page:state.page-1
         }))
     },
-    type:[],
+    type:_formTypeFilters,
     setType:(type)=>{
         set(()=>({
             type:type
         }))
     },
-    status:[],
+    status:[..._FormStatusFilter] ,
     setStatus:(status)=>{
         set({status})
     },
     date:null,
     setDate:(date)=>{
+        console.log(date,"From store")
         set(()=>{
             return{date}
         })

@@ -32,15 +32,15 @@ export default function FormFilter() {
                 <Filters title="Select Filter Date">
                     <FilterDates/>
                 </Filters>
-                <Filters ngClass='sm:w-[380px]'  title="FormType">
+                <Filters ngClass='sm:w-[380px]'  title="Select Form Type">
                     <FIlterFormType filters={_formTypeFilters} title='Select Filter Type'/>
                 </Filters>
-                <Filters ngClass='sm:w-[380px]' className='max-md:grow' title="Select Filter Type ">
+                <Filters ngClass='sm:w-[380px]' className='max-md:grow' title="Select Form Status">
                     <FIlterFormStatus filters={_FormStatusFilter} title='Select Filter Status'/>
                 </Filters>
             </div>
             <Button onClick={()=>{
-                setDate(null);setStatus([]),setType([])
+                setDate(null);setStatus(_FormStatusFilter),setType(_formTypeFilters)
             }}
              variant={"ghost"} className='border-r max-md:hidden flex items-center px-3 font-semibold h-10'>
                 <Svgs.ResetSvg className='mr-3'/>

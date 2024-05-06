@@ -126,12 +126,13 @@ export interface IFindJobRes {
     __v: number;
 }
 
+export type IMixedFormArray = (IFindJobRes | IHireTalentRes | IContactRes)[]
 
 export interface IFormResponse{
     status_code:number
     status:string
     message:string   
-    data:(IFindJobRes | IHireTalentRes | IContactRes)[]
+    data:IMixedFormArray
     pagination:{
         page:string
         limit:number

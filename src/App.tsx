@@ -15,6 +15,9 @@ import QueryProvider from './components/authLayout/QueryProvider'
 import NewPassword from './components/authLayout/Newpassword'
 import USerInfo from './pages/USerInfo'
 import EditProfile from './pages/EditProfile'
+import HireTalent from './components/form/single/HireTalent';
+import ContactForm from './components/form/single/ContactForm';
+import FindJobView from './components/form/single/FindJobView';
 
 export default function App() {
 
@@ -36,6 +39,9 @@ export default function App() {
           <Route path='/admin/services' element={<ServiceList/>}/>
           <Route path='/admin/services/add' element={<NewService/>}/>
           <Route path='/admin/services/:id' element={<ServiceDetail/>}/>
+          <Route path='/admin/forms/hiretalent/:id' element={<HireTalent/>}/>
+          <Route path='/admin/forms/contactform/:id' element={<ContactForm/>}/>
+          <Route path='/admin/forms/findjob/:id' element={<FindJobView/>}/>
           <Route path='*' element={<div className='section-header h-screen grid place-content-center'>In Development</div>}/>
       </Routes>
       </QueryProvider>

@@ -58,7 +58,7 @@ export interface IFindJob{
     location:string
     interviewDate:Date
     dateOfBirth:Date
-    gender:String
+    gender:string
     resume:string
     site:string
 }
@@ -68,7 +68,8 @@ export interface IContactForm{
     email:string
     mobileNumber:string
     category:string
-    message:string
+    message:string,
+    
 }
 
 

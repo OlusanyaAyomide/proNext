@@ -2,6 +2,9 @@ import React from 'react'
 import {Chart as ChartJS,CategoryScale,LinearScale,PointElement,LineElement,Title,Tooltip,Legend,Filler} from 'chart.js';
 import { Line } from 'react-chartjs-2'
 import { chartConfig } from '../../util/chartconfig';
+import { useDashBoardData } from '../../hooks/useDashboardData';
+import { last2WeeeksAgo } from '../lib/utils';
+import FullLoader from '../util-component/FullLoader';
 
 ChartJS.register(
     CategoryScale,
@@ -15,9 +18,11 @@ ChartJS.register(
 );
 
 export default function DashboardGraph() {
-    const dataSets =[10,30,54,28,58,20,34,96,42,38,48,19,26,33,10]
+    const {dataArray,isLoading} = useDashBoardData()
+    console.log(dataArray)
+    const dataSets =dataArray ? dataArray:[]
     const data ={
-        labels:dataSets.map((_,key)=>key+1),
+        labels:last2WeeeksAgo(),
         datasets:[
             {
                 label:"Form",
@@ -34,7 +39,8 @@ export default function DashboardGraph() {
     <div className='card mt-6 max-w-[93vw] sm:max-w-[94vw] md:max-w-[95.5vw] lg:max-w-[calc(100vw-300px)]'>
         <h1 className="section-header">Form Analysis</h1>
         <div className="w-full overflow-hidden h-[300px] sm:h-[400px] xl:h-[300px]">
-            <Line options={chartConfig} data={data}/>
+            {dataArray?.length ?<Line options={chartConfig} data={data}/>:null}
+            <FullLoader isLoading={isLoading}/>
         </div>
 
     </div>

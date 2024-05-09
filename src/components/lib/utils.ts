@@ -59,3 +59,19 @@ export const getTodayDateString = ()=>{
   const isoString = currentDate.toISOString();
   return isoString
 }
+
+export const last2WeeeksAgo  = ()=>{
+  const daysOfWeek: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const today = new Date();
+  const last14Days: string[] = [];
+
+  for (let i = 13; i >= 0; i--) {
+      const pastDate = new Date(today);
+      pastDate.setDate(today.getDate() - i);
+      const dayOfWeek = daysOfWeek[pastDate.getDay()];
+      last14Days.push(dayOfWeek);
+  }
+
+  return last14Days;
+}
+

@@ -21,11 +21,11 @@ export const chartConfig = {
         }
       },
     y: {
-        // title:{
-        //     display:true,
-        //     text:"Amount Spent (₦)"
-        // },
-        min: 0
+ 
+        min: 0,
+        ticks:{
+          stepSize: 1
+        }
       }
     }
 }

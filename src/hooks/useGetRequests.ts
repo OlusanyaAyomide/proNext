@@ -25,10 +25,7 @@ export const useGetRequest = <T>({url,staleTime=DEFAULT,param="",detailId,showAd
     } else{
         reqUrl = `${url}${adminId?`/${adminId.admin}`:""}${param}`
     } 
-            // reqUrl = `${url}`
-        // // reqUrl = detailId?`${url}${adminId?`/${adminId.admin}/${detailId}`:`${url}${adminId?`/${adminId.admin}`:""}`}`:
-        // `${url}${adminId?`/${adminId.admin}/${detailId}`}
-    console.log(reqUrl)
+
     return useQuery<AxiosResponse<T>>({...rest,staleTime,queryFn:()=>{
         return request.get(reqUrl) as Promise<AxiosResponse<T>> 
     }})

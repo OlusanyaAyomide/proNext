@@ -18,7 +18,6 @@ import { usePostRequest } from '../../hooks/usePostRequests';
 import { IResHireForm } from '../../util/resInterfaces';
 import { ISubmitFindJob } from '../../util/mutateInterface';
 import Loader from '../util-component/Loader';
-import JobLocation from './JobLocation';
 import DateOfBirthPicker from './DateOfBirthPicker';
 import HireTalentForm from './HireTalentForm';
 import JobDialog from '../util-component/JobDialog';
@@ -179,15 +178,6 @@ export default function FindJobForm() {
             others
             disabled={!location}
         />
-        {/* <JobLocation
-            name='site'
-            error={errors.site?.message}
-            setValue={setValue}
-            className='mb-4 w-7/12 sm:w-6/12'
-            title='Site'
-            disabled={!!location}
-            selectTitle={location}
-        /> */}
 
         <div className='w-full md:w-6/12 md:pr-2 mb-6 relative'>
             <h3 className='ml-[2px] font-medium  text-gray-800 text-support mb-[2px] md:text-[15px]'>When are you available to walk-in for an interview</h3>

@@ -3,18 +3,17 @@ import { _sideLinks } from '../../util/constants'
 import { Link, useLocation } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { Svgs } from '../../util/svgs'
-import { it } from 'node:test'
+
 
 export default function SideLinks() {
     const {pathname} = useLocation()
-    console.log(pathname)
+
   return (
     <div className='px-2 pt-8 lg:pt-5 flex h-full flex-col justify-between'>
         <div>
             {_sideLinks.map((item,key)=>{
                 const isActive = pathname.startsWith(item.link)
-                console.log(isActive)
-                // console.log(item.link)
+
                 return(<Link key={key} to={item.link}>
                     <Button variant={isActive?"default":"ghost"} className='w-full flex-center justify-start mb-5 rounded-md'  >
                         <item.Icon isActive className='mr-4'/>

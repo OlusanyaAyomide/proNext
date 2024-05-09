@@ -108,6 +108,10 @@ export interface IHireTalentRes {
 }
 
 export interface IFindJobRes {
+    fileupload:{
+        file:string;
+        type:string
+    }
     _id: string;
     lastname: string;
     firstname: string;
@@ -136,5 +140,18 @@ export interface IFormResponse{
     pagination:{
         page:string
         limit:number
+    }
+}
+
+export interface IDashBoardRes{
+    status_code:number
+    status:string
+    message:string   
+    data:{
+        totaldata:IMixedFormArray
+        totalcontactus: number,
+        totalhiretalent: number,
+        totalfindjob: number,
+        totalform: number
     }
 }

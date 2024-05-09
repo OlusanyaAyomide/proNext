@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useParams } from 'react-router-dom'
 import { useGetRequest } from '../../../hooks/useGetRequests'
 import { AxiosResponse } from 'axios'
@@ -13,11 +13,13 @@ import FullLoader from '../../util-component/FullLoader'
 import { IoDocumentTextOutline } from 'react-icons/io5'
 import { Button } from '../../ui/button'
 
+
 export default function FindJobView() {
   const {id} = useParams()
   const {isLoading,data} = useGetRequest<AxiosResponse<IFindJobRes>>({queryKey:["findjob",id || "id"],detailId:id,url:"/admin/retrieve/single/form",param:"?type=findjob"})
 
   const formData = data?.data.data
+  const ref = useRef<HTMLAnchorElement>(null)
 
   return (
     <Layout>
@@ -45,7 +47,11 @@ export default function FindJobView() {
                     <span className="w-full max-sm:mb-2 sm:w-5/12">Status</span>
                     <div className='w-full sm:w-7/12 flex font-semibold text-pro-blue'>
                       <IoDocumentTextOutline className='text-[50px] text-deepGreen'/>
-                      <Button variant={"ghost"}  className="mt-2 block h-8 px-3">Download Resume</Button>
+                      <Button onClick={()=>{ref.current?.click()}}
+                       variant={"ghost"}  className="mt-2 block h-8 px-3">Download Resume</Button>
+                        <a target="_blank" ref={ref} className='hidden' download={`${formData.firstname}`} href={formData.fileupload.file}>
+                          <img alt={`${formData.firstname}-resume.png`} src={formData.fileupload.file} />
+                        </a>
                     </div>
                 </div>
             </div>

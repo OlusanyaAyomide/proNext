@@ -11,19 +11,25 @@ import { useQueryClient } from '@tanstack/react-query'
 import Loader from '../../util-component/Loader'
 
 
-export default function FormHeader({type,id,status}:{type:FormType,id:string,status:FormStatus}) {
+export default function FormHeader({type,id,status,email}:{type:FormType,id:string,status:FormStatus,email:string}) {
     const [value,setvalue] = useState<string>(status)
     const [isOpened,setIsOpened] = useState(false)
     const queryClient = useQueryClient()
-    const {isPending,mutate} = usePostRequest<void,IUpdateStatus>({url:"/admin/update/form/status",showError:true,showSuccess:"Form Status Succesfully updated",onSuccess:()=>{
+    const {isPending,mutate} = usePostRequest<void,IUpdateStatus>({url:"/admin/update/form/status",showError:true,showSuccess:"Form Status successfully updated",onSuccess:()=>{
       queryClient.invalidateQueries({queryKey:[type,id],type:"all"})
       setIsOpened(false)
     }})
+
+    const openEmailCliet = () =>{
+      if (!window) { return; }
+      window.open(`mailto:${email}`)
+    }
+
   return (
     <div className="px-2 mt-5 mb-1 flex-center flex-wrap justify-between">
         <h3 className="section-header">Candidate Form</h3>
         <div>
-            <Button variant="outline" className='mr-3'>Send Email</Button>
+            <Button onClick={openEmailCliet} variant="outline" className='mr-3'>Send Email</Button>
             <AlertDialog open={isOpened}>
               <AlertDialogTrigger asChild>
                 <Button className='px-5' onClick={()=>{setIsOpened(true)}}>Update Status</Button>

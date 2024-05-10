@@ -25,7 +25,7 @@ export default function FindJobView() {
     <Layout>
     {formData?
         <>
-            <FormHeader id={id || ""} type="findjob" status={formData.status}/>
+            <FormHeader email={formData.email} id={id || ""} type="findjob" status={formData.status}/>
             <div className='card px-2 py-6 mb-3 sm:px-3 mt-3'>
                 <FormItem title='Email' content={formData.email} />
                 <FormItem title='Name' content={`${formData.firstname} ${formData.lastname}`} />

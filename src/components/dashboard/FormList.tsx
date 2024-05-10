@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function FormList({form,isRecent}:{form:IMixedFormArray,isRecent?:boolean}) {
-    if(!form){return <span>Server Errror</span>}
+    if(!form){return <span>Server Error</span>}
     return(
         <Table>
         <TableHeader className='mb-3 rounded-lg overflow-hidden '>

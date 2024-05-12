@@ -5,7 +5,6 @@ import { useFormFilter } from '../../store/useFormFilters'
 
 export default function Paginate({totalPages}:{totalPages:number}) {
     const {page,increasePage,reducePage,jumpToPage} = useFormFilter()
-
   return (
     <div className="w-fit mt-4  flex-center mx-auto">
         <span className='mr-1'>previous</span>

@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <div className={`sticky ${isScrolled?"bg-white":"bg-transparent"} duration-1000 landing-pad transition-colors z-40 text-[15px] justify-between flex-center py-1  top-0 left-0 w-full`} 
     >   
-        <Logo className=''/>
+        <Logo/>
         <div className="flex-center  grow lg:pl-32 full md:max-w-[500px] lg:max-w-[700px] justify-between max-md:hidden">
             <div className="flex-center">
                 {_homeNavMenu.map((item,key)=>(

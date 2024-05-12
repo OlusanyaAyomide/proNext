@@ -16,8 +16,8 @@ import { usePostRequest } from '../../../hooks/usePostRequests';
 import { ICreateNewUser } from '../../../util/mutateInterface';
 import { imgUrl } from '../../util-component/keys';
 import Loader from '../../util-component/Loader';
-import { useQueryClient, useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { IUser } from '../../../util/resInterfaces';
+import { useQueryClient } from '@tanstack/react-query';
+
 
 interface IUserAdd{
     user?:IEditUserSchema
@@ -46,7 +46,6 @@ export default function UserAdd({user}:IUserAdd) {
         }
   
     })
-    console.log(errors)
 
 
     const handleUpload = (e: React.ChangeEvent<HTMLInputElement>)=>{ 

@@ -11,15 +11,21 @@ interface IuseFormFilter{
     reducePage:()=>void
     type:FormType[]
     status:FormStatus[]
-    setStatus:(staus:FormStatus[])=>void
+    setStatus:(stas:FormStatus[])=>void
     setType:(type:FormType[])=>void
     date:null | string
     setDate:(date:string | null)=>void
+    jumpToPage:(page:number)=>void
 
 }
 
 export const useFormFilter = create<IuseFormFilter>((set)=>({
     page:1,
+    jumpToPage:(page)=>{
+        set(()=>({
+            page
+        }))
+    },
     increasePage:()=>{
         set((state)=>({
             page:state.page+1
@@ -46,8 +52,5 @@ export const useFormFilter = create<IuseFormFilter>((set)=>({
         set(()=>{
             return{date}
         })
-        // set(()=>({
-        //     date:date
-        // }))
     },
 }))

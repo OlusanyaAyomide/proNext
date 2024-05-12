@@ -1,4 +1,5 @@
 import * as yup from "yup"
+import { IChangePassword } from "../util/mutateInterface"
 
 export interface INewUserSchema{
     firstName:string
@@ -145,4 +146,14 @@ export const contactFormSchema: yup.ObjectSchema<IContactForm> = yup.object({
     message: yup.string().required(),
 
 });
+
+
+export const resetInAppPasswordsechema: yup.ObjectSchema<IChangePassword> = yup.object({
+    currentpassword: yup.string().required(),
+    newpassword: yup.string().required(),
+    confirmPassword:yup.string()
+    .oneOf([yup.ref('newpassword')], 'Password fields must match').required()
+
+});
+ 
  

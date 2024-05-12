@@ -12,7 +12,7 @@ import { useFormFilter } from '../../store/useFormFilters'
 import { Button } from '../ui/button'
 
 export default function FormFilter() {
-    const {setDate,setStatus,setType} = useFormFilter()
+    const {setDate,setStatus,setType,jumpToPage} = useFormFilter()
     return (
     <div>
         <div className='pt-7 mb-8 flex sm:items-center max-sm:flex-col'>
@@ -40,7 +40,7 @@ export default function FormFilter() {
                 </Filters>
             </div>
             <Button onClick={()=>{
-                setDate(null);setStatus(_FormStatusFilter),setType(_formTypeFilters)
+                setDate(null);setStatus(_FormStatusFilter),setType(_formTypeFilters),jumpToPage(1)
             }}
              variant={"ghost"} className='border-r max-md:hidden flex items-center px-3 font-semibold h-10'>
                 <Svgs.ResetSvg className='mr-3'/>

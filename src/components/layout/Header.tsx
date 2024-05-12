@@ -9,6 +9,10 @@ import {jwtDecode} from "jwt-decode"
 import { IToken,IUser } from '../../util/resInterfaces'
 import { useGetRequest } from '../../hooks/useGetRequests'
 import { Skeleton } from '../ui/skeleton'
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
+import { Button } from '../ui/button'
+import LogOutUser from './LogOutUser'
+import { Link } from 'react-router-dom'
 export default function Header() {
     const [{authCookie},] = useCookies(['authCookie'])
     const adminId = (authCookie?jwtDecode(authCookie as string):null ) as IToken | null
@@ -50,8 +54,29 @@ export default function Header() {
                     {!isLoading?<h3 className="">Admin</h3>:null}
                 </div>
                 {!isLoading?
-                    <div className="rounded-full grid place-items-center ml-2 h-5 w-5 border">
-                         <Svgs.ChevronSvg className='scale-150 '/>
+                    <div className="rounded-full grid place-items-center ml-2">
+                        <Popover>
+                            <PopoverTrigger className='cursor-pointer flex-center justify-center h-8 w-8'>
+                                <Svgs.ChevronSvg className='scale-150 '/>
+                            </PopoverTrigger>
+                            <PopoverContent className='py-0 px-0 mt-3 w-[150px]' side="bottom" align="end">
+                                <Link to={`/admin/users/${adminId?.admin}`}>
+                                    <Button className='w-full' variant={"ghost"}>
+                                        <span>Profile</span>
+                                    </Button>
+                                </Link>
+                                <Link to={"/admin/setup/changepassword"}>
+                                    <Button className='w-full' variant={"ghost"}>
+                                        <span>Change Password</span>
+                                    </Button>
+                                </Link>
+                                <LogOutUser>
+                                    <Button className='w-full' variant={"ghost"}>
+                                        <span>Log out</span>
+                                    </Button>
+                                </LogOutUser>
+                            </PopoverContent>
+                        </Popover>
                     </div>:null
                 }
 

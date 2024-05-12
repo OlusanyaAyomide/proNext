@@ -140,6 +140,7 @@ export interface IFormResponse{
     pagination:{
         page:string
         limit:number
+        totalpages:number
     }
 }
 

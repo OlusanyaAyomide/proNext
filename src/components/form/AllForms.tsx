@@ -9,6 +9,7 @@ import { useCookies } from 'react-cookie'
 import { jwtDecode } from 'jwt-decode'
 import request from '../../hooks/requests'
 import FullLoader from '../util-component/FullLoader'
+import Paginate from './Paginate'
 
 export default function AllForms() {
 
@@ -27,7 +28,14 @@ export default function AllForms() {
   
   return (
     <div className='mt-5 pb-8 card'>
-        {(data && isSuccess && !isLoading) ?<FormList form={data.data.data || []}/>:""}
+        {(data && isSuccess && !isLoading) ?
+
+        <>
+          <FormList form={data.data.data}/>
+          <Paginate totalPages = {data.data.pagination.totalpages} />
+        </>
+      :
+        null}
         <FullLoader isLoading={isLoading}/>
         {(isSuccess && data.data.data.length===0)?
         <div className='w-full px-2 mx-auto mt-4 max-w-[280px]'>

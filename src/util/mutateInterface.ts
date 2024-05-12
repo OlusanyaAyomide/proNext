@@ -67,3 +67,12 @@ export interface IUpdateStatus{
     status : string,
     formid : string
 }
+
+export interface IChangepasswordBody{
+    currentpassword:string,
+    newpassword:string
+}
+export interface IChangePassword extends IChangepasswordBody{
+    confirmPassword:string
+}
+

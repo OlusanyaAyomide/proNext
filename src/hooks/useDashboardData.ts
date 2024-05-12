@@ -13,7 +13,6 @@ export const useDashBoardData = ()=>{
         const formData = data.data.data?.totaldata
         if(!formData){return []}
         const counts: number[] = Array(14).fill(0);
-        console.log(formData.length)
 
         formData.forEach(form => {
             const strippedDate = form.createdAt.replace(/\s/g, '')
@@ -23,7 +22,6 @@ export const useDashBoardData = ()=>{
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
             if (diffDays >= 1 && diffDays <= 14) {
                 counts[14 - diffDays]++;
-                console.log(form.createdAt)
             }
         });
     

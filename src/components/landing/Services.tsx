@@ -5,6 +5,7 @@ import { Svgs } from '../../util/svgs'
 import TriggerView from '../util-component/TriggerView'
 
 export default function Services() {
+    const partners =["/partner5.png","/partner6.png","/partner7.png"]
   return (
     <div id='services' className='bg-white landing-pad py-6'>
         <h1 className="text-center  text-pro-blue font-bold text-lg">Services</h1>
@@ -20,14 +21,21 @@ export default function Services() {
                     </div>
                 </TriggerView>
             ))}
-            <TriggerView side='up' className='w-fit mx-auto'  >
+            <TriggerView side='up' className='w-fit mx-auto'>
                 <Button disabled className='mx-auto items-center px-6 hover:bg-pro-blue   flex bg-pro-blue'>
                     <span>Load More Services</span>
                     <Svgs.DownloadSvg className='ml-4'/>
                 </Button>
             </TriggerView>
-     
         </div>
+        <div className="flex-center justify-center mb-4 mt-4 w-full flex-wrap">
+            {partners.map((item,key)=>(
+                <div className='w-full xs:w-6/12 md:w-4/12 px-2' key={key}>
+                    <img alt={item} src={item} className={`max-w-[170px] lg:max-w-[250px] max-sm:mx-auto block ${key===0?"":""} ${key===1?"mt-2":""}`}/>
+                </div>
+            ))}
+        </div>
+
     </div>
   )
 }
